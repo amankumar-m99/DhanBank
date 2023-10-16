@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { MenuPlaceholderComponent } from './menu-placeholder/menu-placeholder.component';
 import { PinValidatorComponent } from './pin-validator/pin-validator.component';
+import { DepositComponent } from './deposit/deposit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PinValidatorComponent } from './pin-validator/pin-validator.component';
     LoginComponent,
     HomeComponent,
     MenuPlaceholderComponent,
-    PinValidatorComponent
+    PinValidatorComponent,
+    DepositComponent
   ],
   imports: [
     BrowserModule,

@@ -5,11 +5,11 @@
         <div class="text-center mb-3 row justify-content-center">
           <img src="../assets/imgs/bank.png" alt="logo" class="img-fluid text-center col-5 col-md-4 col-lg-3" />
         </div>
-        <div class="col mb-5"><p class="h3 text-center">Validate your PIN</p></div>
+        <div class="col mb-5"><p class="h3 text-center">Deposit Money</p></div>
         <div class="mb-5">
-          <label for="pin" class="form-label">Enter your 4-digit PIN</label>
-          <input type="password" class="form-control" id="pin" aria-describedby="PinHelp" required maxlength="4">
-          <div id="PinHelp" class="form-text">&nbsp;</div>
+          <label for="inputAmount" class="form-label">Enter the amount</label>
+          <input type="email" class="form-control" id="inputAmount" aria-describedby="amountHelp">
+          <div id="amountHelp" class="form-text">Amount should be in multiples of 100, 200, 500, 2000.</div>
         </div>
         <div class="row justify-content-center">
             <button type="button" class="btn btn-danger col-3" (click)="cancel()">Cancel</button>

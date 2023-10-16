@@ -12,16 +12,19 @@ export class MenuComponent {
   withdraw(){
     this.router.navigate(['pin-validator', 'withdraw']);
   }
+  deposit(){
+    this.router.navigate(['pin-validator', 'deposit']);
+  }
   transfer(){
     this.router.navigate(['pin-validator', 'transfer']);
-  }
-  back(){
-    this.router.navigate(['pin-validator', 'home']);
   }
   pinChange(){
     this.router.navigate(['pin-validator', 'pin-change']);
   }
   balance(){
     this.router.navigate(['pin-validator', 'balance']);
+  }
+  cancel(){
+    this.router.navigate(['home']);
   }
 }
