@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { MenuPlaceholderComponent } from './menu-placeholder/menu-placeholder.component';
+import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MenuPlaceholderComponent } from './menu-placeholder/menu-placeholder.co
     PageNotFoundComponent,
     LoginComponent,
     HomeComponent,
-    MenuPlaceholderComponent
+    MenuPlaceholderComponent,
+    PinValidatorComponent
   ],
   imports: [
     BrowserModule,

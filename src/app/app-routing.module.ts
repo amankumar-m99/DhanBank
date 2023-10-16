@@ -9,11 +9,13 @@ import { PinChangeComponent } from './pin-change/pin-change.component';
 import { BalanceComponent } from './balance/balance.component';
 import { MenuPlaceholderComponent } from './menu-placeholder/menu-placeholder.component';
 import { TransferComponent } from './transfer/transfer.component';
+import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
-  {path:'menu', component:MenuComponent},
   {path:'login', component:LoginComponent},
+  {path:'menu', component:MenuComponent},
+  {path:'pin-validator/:menu', component:PinValidatorComponent},
   {path:'withdraw', component:WithdrawComponent},
   {path:'transfer', component:TransferComponent},
   {path:'pin-change', component:PinChangeComponent},

@@ -10,18 +10,18 @@ export class MenuComponent {
   constructor(private router:Router){}
 
   withdraw(){
-    this.router.navigate(['withdraw']);
+    this.router.navigate(['pin-validator', 'withdraw']);
   }
   transfer(){
-    this.router.navigate(['transfer']);
+    this.router.navigate(['pin-validator', 'transfer']);
   }
   back(){
-    this.router.navigate(['home']);
+    this.router.navigate(['pin-validator', 'home']);
   }
   pinChange(){
-    this.router.navigate(['pin-change']);
+    this.router.navigate(['pin-validator', 'pin-change']);
   }
   balance(){
-    this.router.navigate(['balance']);
+    this.router.navigate(['pin-validator', 'balance']);
   }
 }
