@@ -11,7 +11,6 @@ import { BalanceComponent } from './balance/balance.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { MenuPlaceholderComponent } from './menu-placeholder/menu-placeholder.component';
 import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';
 
@@ -26,7 +25,6 @@ import { DepositComponent } from './deposit/deposit.component';
     PageNotFoundComponent,
     LoginComponent,
     HomeComponent,
-    MenuPlaceholderComponent,
     PinValidatorComponent,
     DepositComponent
   ],

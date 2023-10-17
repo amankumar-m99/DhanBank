@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { StaticData } from '../static/static-data';
 
 @Component({
   selector: 'app-balance',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./balance.component.css']
 })
 export class BalanceComponent {
+  assetPath:string = StaticData.assetsDirPath;
+  logoImgSrc = this.assetPath.concat("imgs/bank.png");
   constructor(private router:Router){}
 
   submit(){}

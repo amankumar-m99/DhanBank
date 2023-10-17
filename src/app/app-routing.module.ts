@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { PinChangeComponent } from './pin-change/pin-change.component';
 import { BalanceComponent } from './balance/balance.component';
-import { MenuPlaceholderComponent } from './menu-placeholder/menu-placeholder.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';

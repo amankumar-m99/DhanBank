@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StaticData } from '../static/static-data';
 
 @Component({
   selector: 'app-page-not-found',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-not-found.component.css']
 })
 export class PageNotFoundComponent {
-
+  assetPath:string = StaticData.assetsDirPath;
+  logoImgSrc = this.assetPath.concat("imgs/bank.png");
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { StaticData } from '../static/static-data';
 
 @Component({
   selector: 'app-pin-change',
@@ -7,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./pin-change.component.css']
 })
 export class PinChangeComponent {
+  assetPath:string = StaticData.assetsDirPath;
+  logoImgSrc = this.assetPath.concat("imgs/bank.png");
+  
   constructor(private router:Router){}
 
   submit(){}

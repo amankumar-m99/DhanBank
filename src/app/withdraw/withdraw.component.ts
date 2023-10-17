@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { StaticData } from '../static/static-data';
 
 @Component({
   selector: 'app-withdraw',
@@ -7,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./withdraw.component.css']
 })
 export class WithdrawComponent {
+  assetPath:string = StaticData.assetsDirPath;
+  logoImgSrc = this.assetPath.concat("imgs/bank.png");
+
   constructor(private router:Router){}
 
   submit(){}
