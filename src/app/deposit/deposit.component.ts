@@ -7,9 +7,11 @@ import { StaticData } from '../static/static-data';
   templateUrl: './deposit.component.html',
   styleUrls: ['./deposit.component.css']
 })
+
 export class DepositComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
+
   constructor(private router:Router){}
 
   submit(){}

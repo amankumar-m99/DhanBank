@@ -7,9 +7,11 @@ import { StaticData } from '../static/static-data';
   templateUrl: './balance.component.html',
   styleUrls: ['./balance.component.css']
 })
+
 export class BalanceComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
+
   constructor(private router:Router){}
 
   submit(){}

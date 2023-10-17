@@ -7,6 +7,7 @@ import { StaticData } from '../static/static-data';
   templateUrl: './transfer.component.html',
   styleUrls: ['./transfer.component.css']
 })
+
 export class TransferComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");

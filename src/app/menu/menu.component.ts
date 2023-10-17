@@ -7,9 +7,11 @@ import { StaticData } from '../static/static-data';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
 export class MenuComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
+  
   constructor(private router:Router){}
 
   withdraw(){

@@ -7,10 +7,11 @@ import { StaticData } from '../static/static-data';
   templateUrl: './pin-change.component.html',
   styleUrls: ['./pin-change.component.css']
 })
+
 export class PinChangeComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
-  
+
   constructor(private router:Router){}
 
   submit(){}

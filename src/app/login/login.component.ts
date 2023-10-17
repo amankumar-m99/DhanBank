@@ -7,10 +7,13 @@ import { StaticData } from '../static/static-data';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
+
   constructor(private router:Router){}
+
   submit(){
     this.router.navigate(['menu']);
   }

@@ -7,6 +7,7 @@ import { StaticData } from '../static/static-data';
   templateUrl: './withdraw.component.html',
   styleUrls: ['./withdraw.component.css']
 })
+
 export class WithdrawComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");

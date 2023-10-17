@@ -7,6 +7,7 @@ import { StaticData } from '../static/static-data';
   templateUrl: './pin-validator.component.html',
   styleUrls: ['./pin-validator.component.css']
 })
+
 export class PinValidatorComponent {
   menuId='';
   assetPath:string = StaticData.assetsDirPath;
