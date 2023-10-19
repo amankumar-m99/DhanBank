@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+
+import { LoginFormData } from '../models/login-form-data'
 import { StaticData } from '../static/static-data';
 
 @Component({
@@ -11,10 +13,14 @@ import { StaticData } from '../static/static-data';
 export class LoginComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
+  loginFormData:LoginFormData;
 
-  constructor(private router:Router){}
+  constructor(private router:Router){
+    this.loginFormData = new LoginFormData("","");
+  }
 
   submit(){
-    this.router.navigate(['menu']);
+    console.log(this.loginFormData);
+    // this.router.navigate(['menu']);
   }
 }
