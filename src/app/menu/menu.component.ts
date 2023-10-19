@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { StaticData } from '../static/static-data';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
 export class MenuComponent {
+  assetPath:string = StaticData.assetsDirPath;
+  logoImgSrc = this.assetPath.concat("imgs/bank.png");
+  
   constructor(private router:Router){}
 
   withdraw(){
