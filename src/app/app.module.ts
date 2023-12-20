@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';
+import { LoginService } from './services/login.service';
+import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { DepositComponent } from './deposit/deposit.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

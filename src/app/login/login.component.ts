@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { LoginFormData } from '../models/login-form-data'
 import { StaticData } from '../static/static-data';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,19 @@ export class LoginComponent {
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
   loginFormData:LoginFormData;
 
-  constructor(private router:Router){
+  constructor(private router:Router, private loginService:LoginService){
     this.loginFormData = new LoginFormData("","");
   }
 
   submit(){
-    console.log(this.loginFormData);
-    // this.router.navigate(['menu']);
+    this.loginService.getCard(this.loginFormData).subscribe(response=>{
+      console.log(response);
+      if(response.pin == this.loginFormData.pin){
+        this.router.navigate(['menu']);
+      }
+    }, error=>{
+      console.log("error");
+      console.log(error.status);
+    })
   }
 }
