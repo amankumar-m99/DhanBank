@@ -10,9 +10,11 @@ import { BalanceComponent } from './balance/balance.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';
+import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },
+  { path:'scan', component:QrScannerComponent },
   { path:'login', component:LoginComponent },
   { path:'menu', component:MenuComponent },
   { path:'pin-validator/:menu', component:PinValidatorComponent },

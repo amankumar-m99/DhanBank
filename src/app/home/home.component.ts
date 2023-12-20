@@ -15,6 +15,6 @@ export class HomeComponent {
   constructor(private router:Router){}
   
   getStarted(){
-    this.router.navigate(['login'])
+    this.router.navigate(['scan']);
   }
 }

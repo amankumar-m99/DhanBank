@@ -16,6 +16,7 @@ import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { LoginService } from './services/login.service';
 import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common
     LoginComponent,
     HomeComponent,
     PinValidatorComponent,
-    DepositComponent
+    DepositComponent,
+    QrScannerComponent
   ],
   imports: [
     BrowserModule,
