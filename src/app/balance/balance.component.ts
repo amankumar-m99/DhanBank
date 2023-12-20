@@ -9,10 +9,13 @@ import { StaticData } from '../static/static-data';
 })
 
 export class BalanceComponent {
+  balance="00.00";
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
 
-  constructor(private router:Router){}
+  constructor(private router:Router){
+    this.balance = StaticData.card.account.balance;
+  }
 
   submit(){}
 

@@ -6,6 +6,7 @@ import { StaticData } from '../static/static-data';
 import { LoginService } from '../services/login.service';
 import { Card } from '../models/card';
 import { NgControl } from '@angular/forms';
+import { Account } from '../models/account';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,8 @@ export class LoginComponent {
     this.loginService.getCard(this.loginFormData).subscribe(response=>{
       console.log(response);
       if(response.pin == this.loginFormData.pin){
-        StaticData.card = new Card(response.cardNumber, response.pin, response.balance);
+        let account = new Account(response.account.accountNumber, ""+response.account.balance)
+        StaticData.card = new Card(response.cardNumber, response.pin, account);
         this.router.navigate(['menu']);
       }
     }, error=>{

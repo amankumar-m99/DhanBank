@@ -1,3 +1,4 @@
+import { Account } from "../models/account";
 import { Card } from "../models/card";
 
 export class StaticData{

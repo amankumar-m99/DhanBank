@@ -1,3 +1,4 @@
 export class Account{
-    constructor(){}
+    constructor(public accountNumber:string,
+        public balance:string){}
 }
