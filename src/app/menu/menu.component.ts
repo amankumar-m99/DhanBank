@@ -18,20 +18,16 @@ export class MenuComponent {
     this.router.navigate(['pin-validator', 'withdraw']);
   }
   deposit(){
-    // this.router.navigate(['pin-validator', 'deposit']);
-    this.router.navigate(['deposit']);
+    this.router.navigate(['pin-validator', 'deposit']);
   }
   transfer(){
-    // this.router.navigate(['pin-validator', 'transfer']);
     this.router.navigate(['pin-validator', 'transfer']);
   }
   pinChange(){
-    // this.router.navigate(['pin-validator', 'pin-change']);
-    this.router.navigate(['pin-change']);
+    this.router.navigate(['pin-validator', 'pin-change']);
   }
   balance(){
-    // this.router.navigate(['pin-validator', 'balance']);
-    this.router.navigate(['balance']);
+    this.router.navigate(['pin-validator', 'balance']);
   }
   cancel(){
     this.router.navigate(['home']);

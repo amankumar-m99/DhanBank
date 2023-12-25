@@ -17,6 +17,7 @@ import { DepositComponent } from './deposit/deposit.component';
 import { LoginService } from './services/login.service';
 import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
+import { InfoPageComponent } from './info-page/info-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
     HomeComponent,
     PinValidatorComponent,
     DepositComponent,
-    QrScannerComponent
+    QrScannerComponent,
+    InfoPageComponent
   ],
   imports: [
     BrowserModule,

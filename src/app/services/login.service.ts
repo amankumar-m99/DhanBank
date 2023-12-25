@@ -20,6 +20,10 @@ export class LoginService {
     let myUrl = this.url + '/' + card.cardNumber;
     return this._httpClient.get<Card>(myUrl).pipe(catchError(this.handleError));
   }
+  getCardByCardNumber(cardNumber:string):Observable<Card>{
+    let myUrl = this.url + '/' + cardNumber;
+    return this._httpClient.get<Card>(myUrl).pipe(catchError(this.handleError));
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

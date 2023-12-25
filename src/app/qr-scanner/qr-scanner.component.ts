@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { StaticData } from '../static/static-data';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-qr-scanner',
@@ -13,7 +14,7 @@ import { StaticData } from '../static/static-data';
 export class QrScannerComponent {
   visibleQr=true;
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private loginService:LoginService){}
   ngOnInit(){
     this.scanQR();
   }
@@ -31,9 +32,28 @@ export class QrScannerComponent {
     document.getElementById("scanner-modal")?.classList.remove("visible-false");
     document.getElementById("scanner-modal")?.classList.add("visible-true");
     if (result.hasContent) {
-      console.log(result.content); // log the raw scanned content
       StaticData.scannedCardNumber = result.content;
-      this.router.navigate(['login']);
+      this.loginService.getCardByCardNumber(result.content).subscribe(response=>{
+        if(response == null){
+          StaticData.info = "Invalid card.";
+          this.router.navigate(['info']);
+          return;
+        }
+        StaticData.card = response;
+        this.router.navigate(['menu']);
+      }, error=>{
+        if(error.status == 404){
+          StaticData.info = "Invalid card.";
+        }
+        else if(error.status == 0){
+          StaticData.info = "Connection to server cannot be made.";
+        }
+        else{
+          StaticData.info = "Something went wrong. Error code "+ error.status;
+        }
+        this.router.navigate(['info']);
+      });
+      // this.router.navigate(['login']);
     }
   };
   stopScan = () => {
@@ -54,7 +74,6 @@ export class QrScannerComponent {
   };
   checkPermission = async () => {
     // check or request permission
-    console.log("seeking permission");
     // alert("seeking permission");
     const status = await BarcodeScanner.checkPermission({ force: true });
     if (status.granted) {

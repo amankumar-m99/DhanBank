@@ -7,7 +7,7 @@
         </div>
         <div class="mb-3">
           <label for="cardNumberInput" class="form-label">Card Number</label>
-          <input type="text" class="form-control" id="cardNumberInput" aria-describedby="cardNumberInputHelp"
+          <input disabled type="text" class="form-control" id="cardNumberInput" aria-describedby="cardNumberInputHelp"
             required name="cardNumber" #cardNumber="ngModel" [(ngModel)]="loginFormData.cardNumber"
             [class.is-invalid]="cardNumber.touched && cardNumber.invalid"/>
           <div id="cardNumberInputHelp" class="form-text text-danger"

@@ -11,9 +11,11 @@ import { TransferComponent } from './transfer/transfer.component';
 import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
+import { InfoPageComponent } from './info-page/info-page.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },
+  { path:'info', component:InfoPageComponent },
   { path:'scan', component:QrScannerComponent },
   { path:'login', component:LoginComponent },
   { path:'menu', component:MenuComponent },

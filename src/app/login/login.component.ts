@@ -33,7 +33,7 @@ export class LoginComponent {
       console.log(response);
       if(response.pin == this.loginFormData.pin){
         let account = new Account(response.account.accountNumber, ""+response.account.balance)
-        StaticData.card = new Card(response.cardNumber, response.pin, account);
+        StaticData.card = new Card(response.cardNumber, response.pin, response.inValidAttempts, account);
         this.router.navigate(['menu']);
       }
     }, error=>{
