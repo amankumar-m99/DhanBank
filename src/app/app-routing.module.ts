@@ -12,9 +12,11 @@ import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { InfoPageComponent } from './info-page/info-page.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },
+  { path:'admin', component:AdminComponent },
   { path:'info', component:InfoPageComponent },
   { path:'scan', component:QrScannerComponent },
   { path:'login', component:LoginComponent },
