@@ -14,7 +14,7 @@ export class BalanceComponent {
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
 
   constructor(private router:Router){
-    this.balance = StaticData.card.account.balance;
+    this.balance = StaticData.card.account.balance.toString();
   }
 
   submit(){}

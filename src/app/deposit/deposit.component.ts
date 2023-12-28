@@ -21,10 +21,10 @@ export class DepositComponent {
 
   submit(){
     console.log(this.depositFormData.amount);
-    let previousAmount:number =parseFloat(StaticData.card.account.balance);
+    let previousAmount:number =StaticData.card.account.balance;
     let increment = parseFloat(this.depositFormData.amount);
     let currentAmount = previousAmount + increment;
-    StaticData.card.account.balance = ""+currentAmount;
+    StaticData.card.account.balance = currentAmount;
     this.router.navigate(['menu']);
   }
 

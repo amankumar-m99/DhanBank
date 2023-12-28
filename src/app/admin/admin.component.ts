@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { StaticData } from '../static/static-data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -10,5 +11,21 @@ export class AdminComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
 
-  constructor(){}
+  constructor(private router:Router){}
+
+  allCards(){
+    this.router.navigate(['admin/all-cards']);
+  }
+  
+  allAccounts(){
+    this.router.navigate(['admin/all-accounts']);
+  }
+
+  registerCard(){
+    this.router.navigate(['admin/register-card']);
+  }
+
+  registerAccount(){
+    this.router.navigate(['admin/register-account']);
+  }
 }

@@ -13,10 +13,19 @@ import { DepositComponent } from './deposit/deposit.component';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { InfoPageComponent } from './info-page/info-page.component';
 import { AdminComponent } from './admin/admin.component';
+import { RegisterCardComponent } from './register-card/register-card.component';
+import { RegisterAccountComponent } from './register-account/register-account.component';
+import { AllAccountsComponent } from './all-accounts/all-accounts.component';
+import { AllCardsComponent } from './all-cards/all-cards.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },
-  { path:'admin', component:AdminComponent },
+  { path:'admin', component:AdminComponent, children:[
+    {path:'all-accounts', component:AllAccountsComponent},
+    {path:'all-cards', component:AllCardsComponent},
+    {path:'register-account', component:RegisterAccountComponent},
+    {path:'register-card', component:RegisterCardComponent},
+  ] },
   { path:'info', component:InfoPageComponent },
   { path:'scan', component:QrScannerComponent },
   { path:'login', component:LoginComponent },

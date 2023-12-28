@@ -19,6 +19,10 @@ import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { InfoPageComponent } from './info-page/info-page.component';
 import { AdminComponent } from './admin/admin.component';
+import { AllCardsComponent } from './all-cards/all-cards.component';
+import { AllAccountsComponent } from './all-accounts/all-accounts.component';
+import { RegisterAccountComponent } from './register-account/register-account.component';
+import { RegisterCardComponent } from './register-card/register-card.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { AdminComponent } from './admin/admin.component';
     DepositComponent,
     QrScannerComponent,
     InfoPageComponent,
-    AdminComponent
+    AdminComponent,
+    AllCardsComponent,
+    AllAccountsComponent,
+    RegisterAccountComponent,
+    RegisterCardComponent
   ],
   imports: [
     BrowserModule,

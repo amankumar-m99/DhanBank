@@ -1,9 +1,27 @@
 <div class="container">
-    <div class="row flex-column justify-content-center align-items-center full-page-height">
-        <div class="mb-5"><p class="h2 text-center">Admin Panel</p></div>
-        <div class="col-2 mb-5">
-            <img [src]="logoImgSrc" alt="error 404" class="img-fluid" />
+    <div class="row my-3">
+        <div class="col mb-1 row">
+            <div class="col">
+                <span class="h3">Dhan Admin</span>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary mx-1" (click)="allAccounts()">
+                    <i class="bi bi-person"></i> All Accounts</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary mx-1" (click)="allCards()">
+                    <i class="bi bi-credit-card"></i> All Cards</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary mx-1" (click)="registerAccount()"><i class="bi bi-person-plus-fill"></i> New Account</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary mx-1" (click)="registerCard()"><i class="bi bi-plus-lg"></i> New Card</button>
+            </div>
         </div>
-        <div class="mb-5"><p class="h3 text-center">Work in progress.</p></div>
+    </div>
+    <hr/>
+    <div class="row my-2">
+        <router-outlet></router-outlet>
     </div>
 </div>
