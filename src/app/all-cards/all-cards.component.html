@@ -1,1 +1,42 @@
-<p>all-cards works!</p>
+<div class="container">
+    <p class="h5">All Cards</p>
+    <div class="">
+      <table class="table table-info table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#id</th>
+            <th scope="col">Card Number</th>
+            <th scope="col">Account Number</th>
+            <th scope="col">PIN</th>
+            <th scope="col">CVV</th>
+            <th scope="col">Expiry Month</th>
+            <th scope="col">Expiry Year</th>
+            <th scope="col">Invalid Attempts</th>
+            <th scope="col">Block Status</th>
+            <th scope="col">Active Status</th>
+            <th scope="col">Deletion Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let card of cards">
+            <th scope="row">{{card.id}}</th>
+            <td>{{card.cardNumber}}</td>
+            <td>{{card.account.accountNumber}}</td>
+            <td>{{card.pin}}</td>
+            <td>{{card.cvv}}</td>
+            <td>{{card.expiryMonth}}</td>
+            <td>{{card.expiryYear}}</td>
+            <td>{{card.inValidAttempts}}</td>
+            <td>{{card.isBlocked}}</td>
+            <td>{{card.isActive}}</td>
+            <td>{{card.isDeleted}}</td>
+            <td><span class="text-primary"><a><i class="bi bi-pencil"></i></a></span>&nbsp;&nbsp;<span class="text-danger"><a><i class="bi bi-trash3"></i></a></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <img [src]="emptyDataImg" alt="empty-table" class="img-fluid" width="150"/>
+      </div>
+    </div>
+</div>

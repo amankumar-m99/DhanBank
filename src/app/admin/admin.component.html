@@ -1,26 +1,32 @@
 <div class="container">
-    <div class="row my-3">
-        <div class="col mb-1 row">
-            <div class="col">
-                <span class="h3">Dhan Admin</span>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary mx-1" (click)="allAccounts()">
-                    <i class="bi bi-person"></i> All Accounts</button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary mx-1" (click)="allCards()">
-                    <i class="bi bi-credit-card"></i> All Cards</button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary mx-1" (click)="registerAccount()"><i class="bi bi-person-plus-fill"></i> New Account</button>
-            </div>
-            <div class="col">
-                <button class="btn btn-primary mx-1" (click)="registerCard()"><i class="bi bi-plus-lg"></i> New Card</button>
-            </div>
+    <div class="row my-3 justify-content-between align-items-center">
+        <div class="col-4">
+            <span><img [src]="logoImgSrc" alt="dhan-logo img-fluid" width="70"></span>
+            <span class="h3 mx-4">Dhan Admin</span>
+        </div>
+        <div class="col-2 h5">
+            <span class="mx-2">Logout&nbsp;</span>
+            <span><i class="bi bi-person-circle"></i></span>
         </div>
     </div>
     <hr/>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary mx-1" (click)="allAccounts()">
+                <i class="bi bi-person"></i> All Accounts</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary mx-1" (click)="allCards()">
+                <i class="bi bi-credit-card"></i> All Cards</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary mx-1" (click)="registerAccount()"><i class="bi bi-person-plus-fill"></i> New Account</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary mx-1" (click)="registerCard()"><i class="bi bi-plus-lg"></i> New Card</button>
+        </div>
+    </div>
+    <hr>
     <div class="row my-2">
         <router-outlet></router-outlet>
     </div>

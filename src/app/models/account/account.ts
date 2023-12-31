@@ -6,7 +6,7 @@ export class Account{
         public ifscCode:string,
         public balance:number,
         public dateOfOpening:string,
-        public isActive:boolean,
-        public isDeleted:boolean,
+        public active:boolean,
+        public deleted:boolean,
     ){}
 }

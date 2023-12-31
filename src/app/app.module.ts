@@ -10,12 +10,10 @@ import { TransferComponent } from './transfer/transfer.component';
 import { PinChangeComponent } from './pin-change/pin-change.component';
 import { BalanceComponent } from './balance/balance.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';
-import { LoginService } from './services/login.service';
-import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { InfoPageComponent } from './info-page/info-page.component';
 import { AdminComponent } from './admin/admin.component';
@@ -23,6 +21,8 @@ import { AllCardsComponent } from './all-cards/all-cards.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { RegisterAccountComponent } from './register-account/register-account.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
+import { ReactiveFormsModule} from '@angular/forms';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,6 @@ import { RegisterCardComponent } from './register-card/register-card.component';
     PinChangeComponent,
     BalanceComponent,
     PageNotFoundComponent,
-    LoginComponent,
     HomeComponent,
     PinValidatorComponent,
     DepositComponent,
@@ -43,13 +42,15 @@ import { RegisterCardComponent } from './register-card/register-card.component';
     AllCardsComponent,
     AllAccountsComponent,
     RegisterAccountComponent,
-    RegisterCardComponent
+    RegisterCardComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

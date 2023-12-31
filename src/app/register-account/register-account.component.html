@@ -1,19 +1,53 @@
 <div class="container">
-    <p class="h5">Account Registration</p>
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Account Holder Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Opening Balance</label>
-          <input type="text" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Avail ATM Card</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="row align-items-center justify-content-center">
+    <div class="col-12 col-md-6 col-lg-5 mt-5 p-4 border border-dark border-1 rounded">
+      <p class="h5 text-center">Account Registration</p>
+      <hr/>
+      <form class="mt-5" novalidate [formGroup]="registerAccountForm" (ngSubmit)="submit()">
+          <div class="mb-3">
+            <label for="acHolderName" class="form-label"><i class="bi bi-person-fill-exclamation"></i>&nbsp;Account Holder Name</label>
+            <input type="text" class="form-control" id="acHolderName" aria-describedby="acHolderNameHelp"
+              formControlName="acHolderName" [class.is-invalid]="acHolderName.invalid && acHolderName.touched">
+            <div id="acHolderNameHelp" class="form-text small text-danger" [class.d-none]="acHolderName.valid || acHolderName.untouched">
+              Account holder name is required
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="openingBalance" class="form-label"><i class="bi bi-currency-rupee"></i>&nbsp;Opening Balance</label>
+            <input type="text" class="form-control" id="openingBalance" aria-describedby="openingBalanceHelp"
+              formControlName="openingBalance" [class.is-invalid]="openingBalance.invalid && openingBalance.touched">
+            <div id="openingBalanceHelp" class="form-text small text-danger" [class.d-none]="openingBalance.valid || openingBalance.untouched">
+              Invalid value
+            </div>
+          </div>
+  
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" checked formControlName="generateATM">
+            <label class="form-check-label" for="exampleCheck1">Avail ATM Card&nbsp;<i class="bi bi-credit-card"></i></label>
+          </div>
+          <hr/>
+          <button type="submit" class="btn btn-primary" [disabled]="disableSubmitBtn">
+            <span class="spinner-border spinner-border-sm" [class.d-none]="!disableSubmitBtn" aria-hidden="true"></span>
+            <span role="status">&nbsp;Submit{{submitTextSuffix}}</span>
+          </button>
       </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registerAccountModal" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="registerAccountModalTitle" [ngClass]="modalTitleStyleClass">{{modalTitle}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">{{modalBody}}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" [ngClass]="modalCloseBtnStyleClass" data-bs-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
 </div>

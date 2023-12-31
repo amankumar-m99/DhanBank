@@ -1,1 +1,37 @@
-<p>all-accounts works!</p>
+<div class="container">
+    <p class="h5">All Accounts</p>
+    <div class="row">
+        <table class="table table-primary table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#id</th>
+                <th scope="col">A/C Number</th>
+                <th scope="col">A/C Holder Name</th>
+                <th scope="col">Balance</th>
+                <th scope="col">IFSC Code</th>
+                <th scope="col">Date Of Opening</th>
+                <th scope="col">Active Status</th>
+                <th scope="col">Deletion Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let account of accounts">
+                <th scope="row">{{account.id}}</th>
+                <td>{{account.accountNumber}}</td>
+                <td>{{account.accountHolderName}}</td>
+                <td>{{account.balance | currency:"INR":"symbol" }}</td>
+                <td>{{account.ifscCode}}</td>
+                <td>{{account.dateOfOpening}}</td>
+                <td>{{account.active}}</td>
+                <td>{{account.deleted}}</td>
+                <td>
+                  <span class="mx-1 text-dark"><i class="bi bi-eye"></i></span>
+                  <span class="mx-1 text-primary"><i class="bi bi-pencil"></i></span>
+                  <span class="mx-1 text-danger"><i class="bi bi-trash3"></i></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
