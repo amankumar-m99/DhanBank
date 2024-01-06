@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Account } from '../models/account/account';
-import { LoginService } from '../services/login.service';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-all-accounts',
@@ -10,9 +10,9 @@ import { LoginService } from '../services/login.service';
 export class AllAccountsComponent {
   accounts?:Account[];
   constructor(
-    private loginService:LoginService
+    private accountService:AccountService
   ){
-    loginService.getAllAccounts().subscribe(response=>{
+    accountService.getAllAccounts().subscribe(response=>{
       this.accounts=response;
     }, error=>{
       console.log('Error occured while loading all accounts.', error);

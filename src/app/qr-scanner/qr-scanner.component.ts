@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { StaticData } from '../static/static-data';
-import { LoginService } from '../services/login.service';
-import { CardByNumber } from '../models/card/cardByNumber';
+import { CardNumber } from '../models/card/card-number';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'app-qr-scanner',
@@ -15,7 +15,9 @@ import { CardByNumber } from '../models/card/cardByNumber';
 export class QrScannerComponent {
   visibleQr=true;
 
-  constructor(private router:Router, private loginService:LoginService){}
+  constructor(
+    private router:Router,
+    private cardService:CardService){}
   ngOnInit(){
     this.scanQR();
   }
@@ -34,17 +36,29 @@ export class QrScannerComponent {
     document.getElementById("scanner-modal")?.classList.add("visible-true");
     if (result.hasContent) {
       StaticData.scannedCardNumber = result.content;
-      this.loginService.getCardByCardNumber(new CardByNumber(result.content)).subscribe(response=>{
-        if(response == null){
-          StaticData.info = "Invalid card.";
+      this.cardService.getCardByNumber(new CardNumber(result.content)).subscribe(responseCard=>{
+        if(responseCard == null){
+          StaticData.info = "Invalid card!";
           this.router.navigate(['info']);
           return;
         }
-        StaticData.card = response;
+        StaticData.card = responseCard;
+        StaticData.account = responseCard.account;
+        if(!responseCard.isActive){
+          StaticData.info = "Card is not activated. It can be used only after its activated. Kindly contact admin to activate your card.";
+          this.router.navigate(['info']);
+          return;
+        }
+        if(responseCard.isBlocked){
+          StaticData.info = "Card is blocked. Kindly contact admin to unblock your card.";
+          this.router.navigate(['info']);
+          return;
+        }
         this.router.navigate(['menu']);
       }, error=>{
+        console.log(error);
         if(error.status == 404){
-          StaticData.info = "Invalid card.";
+          StaticData.info = "Invalid card!";
         }
         else if(error.status == 0){
           StaticData.info = "Connection to server cannot be made.";
@@ -54,7 +68,6 @@ export class QrScannerComponent {
         }
         this.router.navigate(['info']);
       });
-      // this.router.navigate(['login']);
     }
   };
   stopScan = () => {

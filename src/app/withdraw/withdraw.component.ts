@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StaticData } from '../static/static-data';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginFormData } from '../models/login-form-data';
-import { LoginService } from '../services/login.service';
 import { AccountWithdraw } from '../models/account/accountWithdraw';
-import { animate } from '@angular/animations';
+import { AccountService } from '../services/account.service';
+import { Utils } from '../Utils';
 
 @Component({
   selector: 'app-withdraw',
@@ -26,7 +25,7 @@ export class WithdrawComponent {
   constructor(
     private router:Router,
     private formBuilder:FormBuilder,
-    private service:LoginService
+    private accountService:AccountService
     ){
     this.withdrawForm = this.formBuilder.group({
       amount:['', Validators.required]
@@ -41,52 +40,34 @@ export class WithdrawComponent {
     }
     let amount = this.amountInput.value;
     let isAmountValid = true;
-    if(this.isStringEmpty(amount)){
+    if(Utils.isStringEmpty(amount)){
       this.modalTitle = 'Amount entered is empty.';
       this.modalBody = 'Amount should be a numeric value in the multiples of 100, 200, 500 or 2000.';
       isAmountValid = false;
     }
-    else if(!this.isStringNumeric(amount)){
+    else if(!Utils.isStringNumeric(amount)){
       this.modalTitle = 'Amount entered is not pure numeric value';
       this.modalBody = 'Amount should be a numeric value in the multiples of 100, 200, 500 or 2000.';
       isAmountValid = false;
     }
-    else if(this.getNumericValue(amount) < this.validMultiples[0]){
+    else if(Utils.getNumericValue(amount) < this.validMultiples[0]){
       this.modalTitle = 'Amount cannot be less than ' + this.validMultiples[0] + '.';
       this.modalBody = 'Amount should be a numeric value in the multiples of 100, 200, 500 or 2000.';
       isAmountValid = false;
     }
-    else if(!this.isAmountValidMultiple(this.getNumericValue(amount))){
+    else if(!this.isAmountValidMultiple(Utils.getNumericValue(amount))){
       this.modalTitle = 'Invalid amount';
       this.modalBody = 'Amount should be a numeric value in the multiples of 100, 200, 500 or 2000.';
       isAmountValid = false;
     }
     if(isAmountValid){
-      StaticData
-      this.router.navigate(['pin-validator', 'withdraw']);
+      StaticData.accountWithdraw = new AccountWithdraw(StaticData.account.accountNumber, amount);
+      this.performWithdraw();
     }
     else{
       ($('#withdrawAccountModal') as any).modal('show');
     }
-  }
-
-  isStringEmpty(value:string):boolean{
-    if(value == null || value.length == 0){
-      return true;
-    }
-    return false;
-  }
-
-  isStringNumeric(value:string):boolean{
-    return /^\d+$/.test(value);
-  }
-
-  getNumericValue(value:string):number{
-    if(this.isStringNumeric(value)){
-      return parseInt(value);
-    }
-    return 0;
-  }
+  }  
 
   isAmountValidMultiple(amount:number):boolean{
     let result = true;
@@ -99,5 +80,29 @@ export class WithdrawComponent {
 
   cancel(){
     this.router.navigate(['home']);
+  }
+
+  performWithdraw(){
+    let amount = parseInt(StaticData.accountWithdraw.amount);
+      this.accountService.getAccountByAccountNumber(StaticData.account).subscribe(response=>{
+        StaticData.account = response;
+        if(response.balance > amount){
+          this.accountService.withdraw(StaticData.accountWithdraw).subscribe(withdrawRes=>{
+            StaticData.account = response;
+            alert("success");
+            this.router.navigate(['home']);
+          }, withdrawErr=>{
+            alert("failed to withdraw");
+            this.router.navigate(['home']);
+          });
+        }
+        else{
+          alert("Insuffiecient balance");
+          this.router.navigate(['home']);
+        }
+      }, error=>{
+        alert("Couldn't fetch balance.");
+        this.router.navigate(['home']);
+      });
   }
 }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +15,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import { PinValidatorComponent } from './pin-validator/pin-validator.component';
 import { DepositComponent } from './deposit/deposit.component';
-import { HttpClientModule } from '@angular/common/http';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { InfoPageComponent } from './info-page/info-page.component';
 import { AdminComponent } from './admin/admin.component';
@@ -21,7 +22,6 @@ import { AllCardsComponent } from './all-cards/all-cards.component';
 import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { RegisterAccountComponent } from './register-account/register-account.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
-import { ReactiveFormsModule} from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
 
 @NgModule({

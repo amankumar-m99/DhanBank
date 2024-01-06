@@ -15,8 +15,7 @@ export class MenuComponent {
   constructor(private router:Router){}
 
   withdraw(){
-    // this.router.navigate(['pin-validator', 'withdraw']);
-    this.router.navigate(['withdraw']);
+    this.router.navigate(['pin-validator','withdraw']);
   }
   deposit(){
     this.router.navigate(['pin-validator', 'deposit']);

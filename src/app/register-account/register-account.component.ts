@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../services/login.service';
 import { AccountAdd } from '../models/account/accountAdd';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-register-account',
@@ -20,7 +20,7 @@ export class RegisterAccountComponent {
   disableSubmitBtn = false;
 
   constructor(
-    private loginService: LoginService,
+    private accountService: AccountService,
     private formBuilder: FormBuilder
   ) {
     this.registerAccountForm = this.formBuilder.group({
@@ -53,7 +53,7 @@ export class RegisterAccountComponent {
     let accountAdd = new AccountAdd(name, balance, generateATM);
     this.disableSubmitBtn = true;
     this.submitTextSuffix = 'ting...';
-    this.loginService.addAccount(accountAdd).subscribe(
+    this.accountService.addAccount(accountAdd).subscribe(
       (response) => {
         this.modalTitle = 'Success';
         this.modalTitleStyleClass = 'text-sucess';

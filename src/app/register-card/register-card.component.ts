@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -13,7 +12,6 @@ export class RegisterCardComponent {
   submitTextSuffix = '';
   disableSubmitBtn = false;
   constructor(
-    private loginService:LoginService,
     private formBuilder:FormBuilder,
   ){
     this.registerCardForm = this.formBuilder.group({

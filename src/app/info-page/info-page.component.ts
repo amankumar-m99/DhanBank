@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./info-page.component.css']
 })
 export class InfoPageComponent {
+  info:string = StaticData.info;
   constructor(private rounter:Router){}
-  info = StaticData.info;
   close(){
     StaticData.info = "No Info";
     StaticData.scannedCardNumber = "";

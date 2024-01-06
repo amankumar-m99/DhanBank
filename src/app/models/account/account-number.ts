@@ -1,3 +1,3 @@
-export class AccountByNumber{
+export class AccountNumber{
     constructor(public accountNumber:string){}
 }
