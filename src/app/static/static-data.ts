@@ -1,6 +1,7 @@
 import { Account } from "../models/account/account";
 import { AccountDeposit } from "../models/account/accountDeposit";
 import { AccountWithdraw } from "../models/account/accountWithdraw";
+import { FundTransferForm } from "../models/account/fund-transfer";
 import { Card } from "../models/card/card";
 
 export class StaticData{
@@ -12,4 +13,5 @@ export class StaticData{
     public static info:string;
     public static accountWithdraw:AccountWithdraw;
     public static accountDeposit:AccountDeposit;
+    public static fundTransferForm:FundTransferForm;
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountAdd } from '../models/account/accountAdd';
 import { AccountService } from '../services/account.service';
+import { Utils } from '../Utils';
 
 @Component({
   selector: 'app-register-account',
@@ -31,26 +32,22 @@ export class RegisterAccountComponent {
     this.acHolderName = this.registerAccountForm.controls['acHolderName'];
     this.openingBalance = this.registerAccountForm.controls['openingBalance'];
   }
-  markTouched(group: FormGroup):void{
-    Object.keys(this.registerAccountForm.controls).forEach((key: string)=>{
-      const abstractControl = this.registerAccountForm.get(key);
-      if (abstractControl instanceof FormGroup) {
-        this.markTouched(abstractControl);
-      } else {
-        abstractControl?.markAsTouched();
-      }
-    });
-  }
+
   submit() {
     this.acHolderName.touched=true;
     if (!this.registerAccountForm.valid) {
-      this.markTouched(this.registerAccountForm);
+      Utils.markAllFieldAsTouched(this.registerAccountForm);
       return;
     }
     let name = this.registerAccountForm.value.acHolderName;
-    let balance = this.registerAccountForm.value.balance;
+    let balance = this.registerAccountForm.value.openingBalance;
     let generateATM = this.registerAccountForm.value.generateATM;
-    let accountAdd = new AccountAdd(name, balance, generateATM);
+    if(!Utils.isStringNumeric(balance)){
+      console.log(balance);
+      alert("Balance is not numeric");
+      return;
+    }
+    let accountAdd = new AccountAdd(name, parseInt(balance), generateATM);
     this.disableSubmitBtn = true;
     this.submitTextSuffix = 'ting...';
     this.accountService.addAccount(accountAdd).subscribe(

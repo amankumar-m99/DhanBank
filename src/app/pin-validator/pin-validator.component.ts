@@ -36,7 +36,7 @@ export class PinValidatorComponent {
 
   submit(){
     if(!this.pinValidatorForm.valid){
-      this.inputPin.markAsTouched();
+      Utils.markAllFieldAsTouched(this.pinValidatorForm);
       return;
     }
     let enteredPin = this.inputPin.value;

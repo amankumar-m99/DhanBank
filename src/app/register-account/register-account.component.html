@@ -5,18 +5,24 @@
       <hr/>
       <form class="mt-5" novalidate [formGroup]="registerAccountForm" (ngSubmit)="submit()">
           <div class="mb-3">
-            <label for="acHolderName" class="form-label"><i class="bi bi-person-fill-exclamation"></i>&nbsp;Account Holder Name</label>
-            <input type="text" class="form-control" id="acHolderName" aria-describedby="acHolderNameHelp"
+            <label for="acHolderName" class="form-label">Account Holder Name</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill-exclamation"></i></span>
+              <input type="text" class="form-control" id="acHolderName" aria-describedby="acHolderNameHelp"
               formControlName="acHolderName" [class.is-invalid]="acHolderName.invalid && acHolderName.touched">
+            </div>
             <div id="acHolderNameHelp" class="form-text small text-danger" [class.d-none]="acHolderName.valid || acHolderName.untouched">
               Account holder name is required
             </div>
           </div>
   
           <div class="mb-3">
-            <label for="openingBalance" class="form-label"><i class="bi bi-currency-rupee"></i>&nbsp;Opening Balance</label>
-            <input type="text" class="form-control" id="openingBalance" aria-describedby="openingBalanceHelp"
-              formControlName="openingBalance" [class.is-invalid]="openingBalance.invalid && openingBalance.touched">
+            <label for="openingBalance" class="form-label">Opening Balance</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-currency-rupee"></i></span>
+              <input type="text" class="form-control" id="openingBalance" aria-describedby="openingBalanceHelp"
+                formControlName="openingBalance" [class.is-invalid]="openingBalance.invalid && openingBalance.touched">
+            </div>
             <div id="openingBalanceHelp" class="form-text small text-danger" [class.d-none]="openingBalance.valid || openingBalance.untouched">
               Invalid value
             </div>

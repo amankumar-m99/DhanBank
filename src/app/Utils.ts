@@ -1,3 +1,5 @@
+import { FormGroup } from "@angular/forms";
+
 export class Utils {
   public static isStringEmpty(value: string): boolean {
     if (value == null || value.length == 0) {
@@ -17,5 +19,16 @@ export class Utils {
     return 0;
   }
 
-  
+  public static markAllFieldAsTouched(formGroup: FormGroup):void{
+    Object.keys(formGroup.controls).forEach((key: string)=>{
+      const abstractControl = formGroup.get(key);
+      // const abstractControl:AbstractControl<any, any> = formGroup.get(key);
+      if (abstractControl instanceof FormGroup) {
+        Utils.markAllFieldAsTouched(abstractControl);
+      } else {
+        abstractControl?.markAsTouched();
+      }
+    });
+  }
+
 }

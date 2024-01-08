@@ -6,6 +6,7 @@ import { Card } from '../models/card/card';
 import { CardId } from '../models/card/card-id';
 import { CardNumber } from '../models/card/card-number';
 import { CardAdd } from '../models/card/CardAdd';
+import { CardPinChange } from '../models/card/cardPinChange';
 
 @Injectable({
   providedIn: 'root',
@@ -72,17 +73,17 @@ export class CardService {
       .pipe(catchError(this.handleError));
   }
 
-  changePinById(cardId: CardId): Observable<Card> {
-    let url = this.baseURL + 'card/id/change-pin';
+  changePinById(cardPinChange: CardPinChange): Observable<Card> {
+    let url = this.baseURL + '/card/id/change-pin';
     return this.httpClient
-      .patch<Card>(url, cardId)
+      .patch<Card>(url, cardPinChange)
       .pipe(catchError(this.handleError));
   }
 
-  changePinByNumber(cardNumber: CardNumber): Observable<Card> {
-    let url = this.baseURL + 'card/id/change-pin';
+  changePinByNumber(cardPinChange: CardPinChange): Observable<Card> {
+    let url = this.baseURL + '/card/number/change-pin';
     return this.httpClient
-      .patch<Card>(url, cardNumber)
+      .patch<Card>(url, cardPinChange)
       .pipe(catchError(this.handleError));
   }
 

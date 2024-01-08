@@ -1,6 +1,6 @@
 export class AccountDeposit{
     constructor(
-        public cardNumber:string,
+        public accountNumber:string,
         public amount:string
     ){}
 }

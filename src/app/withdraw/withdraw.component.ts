@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StaticData } from '../static/static-data';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountWithdraw } from '../models/account/accountWithdraw';
 import { AccountService } from '../services/account.service';
 import { Utils } from '../Utils';
@@ -16,10 +16,9 @@ export class WithdrawComponent {
   assetPath:string = StaticData.assetsDirPath;
   logoImgSrc = this.assetPath.concat("imgs/bank.png");
   withdrawForm:FormGroup;
-  amountInput:any;
+  amountInput:AbstractControl<any, any>;
   modalTitle = '';
   modalBody = '';
-  disableSubmitBtn = false;
   validMultiples:number[] = [100, 200, 500, 2000];
 
   constructor(
@@ -35,7 +34,7 @@ export class WithdrawComponent {
 
   submit(){
     if(!this.withdrawForm.valid){
-      this.amountInput.markAsTouched();
+      Utils.markAllFieldAsTouched(this.withdrawForm);
       return;
     }
     let amount = this.amountInput.value;
@@ -88,7 +87,7 @@ export class WithdrawComponent {
         StaticData.account = response;
         if(response.balance > amount){
           this.accountService.withdraw(StaticData.accountWithdraw).subscribe(withdrawRes=>{
-            StaticData.account = response;
+            StaticData.account = withdrawRes;
             alert("success");
             this.router.navigate(['home']);
           }, withdrawErr=>{
