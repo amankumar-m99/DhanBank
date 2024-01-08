@@ -1,31 +1,39 @@
 <div class="container">
-  <p class="h5">Register Card</p>
-  <div class="row align-items-center justify-content-center my-5">
-    <form class="border border-dark border-1 rounded p-5 my-auto col-12 col-md-6 col-lg-5 my-5"
-        novalidate [formGroup]="registerCardForm" (ngSubmit)="submit()">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Account Number</label>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-bounding-box"></i></span>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-            formControlName="acNumber">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-12 col-md-6 col-lg-5 my-5 p-4 border border-dark border-1 rounded">
+      <p class="h5 text-center">Card Registration</p>
+      <hr/>
+      <form class="mt-5"
+          novalidate [formGroup]="registerCardForm" (ngSubmit)="submit()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Account Number</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-bounding-box"></i></span>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="accountNumberInputHelp"
+              formControlName="acNumber" [class.is-invalid]="acNumberInput.invalid && acNumberInput.touched">
+            </div>
+            <div id="accountNumberInputHelp" class="form-text text-danger" [class.d-none]="acNumberInput.valid || acNumberInput.untouched">
+              Account number is required
+            </div>
           </div>
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-          <label for="validity" class="form-label"><i class="bi bi-calendar-check"></i> Validity Period</label>
-          <select class="form-select" aria-label="Default select example" name="validity" id="validity" formControlName="validityPeriod">
-            <option *ngFor="let validityPeriodOption of validityPeriodOptions" [value]="validityPeriodOption">{{validityPeriodOption}} Years</option>
-          </select>
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="immediateActive">
-          <label class="form-check-label" for="exampleCheck1">Activate immediately </label>
-        </div>
-        <button type="submit" class="btn btn-primary" [disabled]="disableSubmitBtn">
-          <span class="spinner-border spinner-border-sm" [class.d-none]="!disableSubmitBtn" aria-hidden="true"></span>
-          <span role="status">&nbsp;Submit{{submitTextSuffix}}</span>
-        </button>
-    </form>
+          <div class="mb-3">
+            <label for="validity" class="form-label">Validity Period</label>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-check"></i></span>
+              <select class="form-select" aria-label="Default select example" name="validity" id="validity" formControlName="validityPeriod">
+                <option *ngFor="let validityPeriodOption of validityPeriodOptions" [value]="validityPeriodOption">{{validityPeriodOption}} Years</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="immediateActive">
+            <label class="form-check-label" for="exampleCheck1">Activate immediately&nbsp;<i class="bi bi-lightning-fill"></i></label>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="disableSubmitBtn">
+            <span class="spinner-border spinner-border-sm" [class.d-none]="!disableSubmitBtn" aria-hidden="true"></span>
+            <span role="status">&nbsp;Submit{{submitTextSuffix}}</span>
+          </button>
+      </form>
+    </div>
   </div>
 </div>

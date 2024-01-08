@@ -14,4 +14,5 @@ export class StaticData{
     public static accountWithdraw:AccountWithdraw;
     public static accountDeposit:AccountDeposit;
     public static fundTransferForm:FundTransferForm;
+    public static validityPeriodOptions:number[] = [1,2,5,8,10];
 }

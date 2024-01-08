@@ -2,7 +2,7 @@ import { FormGroup } from "@angular/forms";
 
 export class Utils {
   public static isStringEmpty(value: string): boolean {
-    if (value == null || value.length == 0) {
+    if (value == null || value.trim().length == 0) {
       return true;
     }
     return false;

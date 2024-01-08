@@ -37,7 +37,6 @@ export class AccountService {
 
   addAccount(accountAdd: AccountAdd): Observable<Account> {
     let url = this.baseURL + '/account';
-    console.log(accountAdd);
     return this.httpClient
       .post<Account>(url, accountAdd)
       .pipe(catchError(this.handleError));
@@ -66,8 +65,6 @@ export class AccountService {
 
   fundTransfer(fundTransferForm: FundTransferForm): Observable<Account> {
     let url = this.baseURL + '/account/fund-transfer';
-    console.log("fetching from.", url);
-    console.log("sending.", fundTransferForm);
     return this.httpClient
       .patch<Account>(url, fundTransferForm)
       .pipe(catchError(this.handleError));

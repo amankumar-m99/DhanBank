@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountAdd } from '../models/account/accountAdd';
 import { AccountService } from '../services/account.service';
 import { Utils } from '../Utils';
+import { StaticData } from '../static/static-data';
 
 @Component({
   selector: 'app-register-account',
@@ -10,9 +11,11 @@ import { Utils } from '../Utils';
   styleUrls: ['./register-account.component.css'],
 })
 export class RegisterAccountComponent {
+  validityPeriodOptions = StaticData.validityPeriodOptions;
   registerAccountForm: FormGroup;
-  acHolderName?:any;
-  openingBalance?:any
+  acHolderNameInput:AbstractControl<any,any>;
+  openingBalanceInput:AbstractControl<any,any>;
+  generateATMInput:AbstractControl<any,any>;
   modalTitle = '';
   modalTitleStyleClass = '';
   modalBody = '';
@@ -28,13 +31,17 @@ export class RegisterAccountComponent {
       acHolderName: ['', Validators.required],
       openingBalance: ['', Validators.required],
       generateATM: [true],
+      atmCardDetails: this.formBuilder.group({
+        validityPeriod: [5, Validators.required],
+        immediateActive: [true]
+      })
     });
-    this.acHolderName = this.registerAccountForm.controls['acHolderName'];
-    this.openingBalance = this.registerAccountForm.controls['openingBalance'];
+    this.acHolderNameInput = this.registerAccountForm.controls['acHolderName'];
+    this.openingBalanceInput = this.registerAccountForm.controls['openingBalance'];
+    this.generateATMInput = this.registerAccountForm.controls['generateATM'];
   }
 
   submit() {
-    this.acHolderName.touched=true;
     if (!this.registerAccountForm.valid) {
       Utils.markAllFieldAsTouched(this.registerAccountForm);
       return;
@@ -42,6 +49,8 @@ export class RegisterAccountComponent {
     let name = this.registerAccountForm.value.acHolderName;
     let balance = this.registerAccountForm.value.openingBalance;
     let generateATM = this.registerAccountForm.value.generateATM;
+    let validityPeriod = this.registerAccountForm.get('atmCardDetails')?.get('validityPeriod')?.getRawValue();
+    alert(validityPeriod);
     if(!Utils.isStringNumeric(balance)){
       console.log(balance);
       alert("Balance is not numeric");
