@@ -23,6 +23,7 @@ import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { RegisterAccountComponent } from './register-account/register-account.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
 import { ModalComponent } from './modal/modal.component';
+import { SpinnerComponent } from './util-components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ModalComponent } from './modal/modal.component';
     AllAccountsComponent,
     RegisterAccountComponent,
     RegisterCardComponent,
-    ModalComponent
+    ModalComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

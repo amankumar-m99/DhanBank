@@ -9,15 +9,52 @@ import { AccountNumber } from '../models/account/account-number';
   styleUrls: ['./all-accounts.component.css']
 })
 export class AllAccountsComponent {
-  accounts?:Account[];
+  accounts:Account[] =[];
+  showLoading = false;
+  errorOccured = false;
+  noData=false;
   constructor(
     private accountService:AccountService
   ){
+    this.setShowLoading();
     accountService.getAllAccounts().subscribe(response=>{
       this.accounts=response;
+      if(this.accounts.length == 0){
+        this.setNoData();
+      }
+      else{
+        this. setDataFound();
+      }
     }, error=>{
-      alert('Error '+error.status+' occured while loading all accounts.');
+      if(error.status == 0){
+        this.setErrorOccured();
+        return;
+      }
     })
+  }
+
+  setShowLoading(){
+    this.showLoading = true;
+    this.noData = false;
+    this.errorOccured = false;
+  }
+
+  setNoData(){
+    this.showLoading = false;
+    this.noData = true;
+    this.errorOccured = false;
+  }
+
+  setDataFound(){
+    this.showLoading = false;
+    this.errorOccured = false;
+    this.noData=false;
+  }
+
+  setErrorOccured(){
+    this.showLoading = false;
+    this.noData = false;
+    this.errorOccured = true;
   }
 
   markAsDelete(id:number){

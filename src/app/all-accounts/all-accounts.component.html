@@ -33,5 +33,16 @@
               </tr>
             </tbody>
           </table>
+          <div *ngIf="showLoading">
+            <app-spinner></app-spinner>
+          </div>
+          <div *ngIf="noData">
+            <p class="text-center fs-1"><i class="bi bi-database-x"></i></p>
+            <p class="text-center">No records found!</p>
+          </div>
+          <div *ngIf="errorOccured">
+            <p class="text-center fs-1"><i class="bi bi-database-fill-exclamation"></i></p>
+            <p class="text-center">Couldn't get data from server!</p>
+          </div>
     </div>
 </div>
