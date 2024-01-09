@@ -26,10 +26,7 @@ export class AllAccountsComponent {
         this. setDataFound();
       }
     }, error=>{
-      if(error.status == 0){
-        this.setErrorOccured();
-        return;
-      }
+      this.setErrorOccured();
     })
   }
 

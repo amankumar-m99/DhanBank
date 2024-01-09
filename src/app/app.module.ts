@@ -23,7 +23,8 @@ import { AllAccountsComponent } from './all-accounts/all-accounts.component';
 import { RegisterAccountComponent } from './register-account/register-account.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
 import { ModalComponent } from './modal/modal.component';
-import { SpinnerComponent } from './util-components/spinner/spinner.component';
+import { GrowingSpinnerComponent } from './util-components/growing-spinner/growing-spinner.component';
+import { BorderSpinnerComponent } from './util-components/border-spinner/border-spinner.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SpinnerComponent } from './util-components/spinner/spinner.component';
     RegisterAccountComponent,
     RegisterCardComponent,
     ModalComponent,
-    SpinnerComponent
+    GrowingSpinnerComponent,
+    BorderSpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -17,4 +17,8 @@ export class HomeComponent {
   getStarted(){
     this.router.navigate(['scan']);
   }
+
+  navigateToAdmin(){
+    this.router.navigate(['admin']);
+  }
 }

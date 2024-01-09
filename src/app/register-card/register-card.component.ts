@@ -59,6 +59,7 @@ export class RegisterCardComponent {
           this.disableSubmitBtn = false;
           this.submitTextSuffix = '';
           let errorStatus = error.status;
+          
           if(errorStatus == 0){
             alert("Connection to server couldn't be made.");
           }

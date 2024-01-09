@@ -18,7 +18,7 @@
             <th scope="col">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="!showLoading && !noData &&!errorOccured">
             <tr *ngFor="let card of cards">
             <th scope="row">{{card.id}}</th>
             <td>{{card.cardNumber}}</td>
@@ -35,8 +35,16 @@
           </tr>
         </tbody>
       </table>
-      <div>
-        <img [src]="emptyDataImg" alt="empty-table" class="img-fluid" width="150"/>
+      <div class="mt-5" *ngIf="showLoading">
+        <app-growing-spinner></app-growing-spinner>
+      </div>
+      <div class="mt-5 fs-5 fw-semibold text-center" *ngIf="noData">
+        <p class="fs-1"><i class="bi bi-database-x"></i></p>
+        <p>No records found!</p>
+      </div>
+      <div class="mt-5 fs-5 fw-semibold text-center" *ngIf="errorOccured">
+        <p class="fs-1"><i class="bi bi-database-fill-exclamation"></i></p>
+        <p>Couldn't get data from server!</p>
       </div>
     </div>
 </div>

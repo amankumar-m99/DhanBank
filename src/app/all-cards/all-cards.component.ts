@@ -13,14 +13,48 @@ export class AllCardsComponent {
   emptyDataImg = this.assetPath.concat("imgs/empty-box.png");
   isDataAvailable = false;
   cards?:Card[];
+  showLoading = false;
+  errorOccured = false;
+  noData=false;
 
   constructor(
     private cardService:CardService
   ){
+    this.setShowLoading();
     cardService.getAllCards().subscribe(response=>{
       this.cards = response;
+      if(this.cards.length == 0){
+        this.setNoData();
+      }
+      else{
+        this.setDataFound();
+      }
     },error=>{
-      console.log("Some error occured while loading all cards.",error);
+      this.setErrorOccured();
     })
+  }
+
+  setShowLoading(){
+    this.showLoading = true;
+    this.noData = false;
+    this.errorOccured = false;
+  }
+
+  setNoData(){
+    this.showLoading = false;
+    this.noData = true;
+    this.errorOccured = false;
+  }
+
+  setDataFound(){
+    this.showLoading = false;
+    this.errorOccured = false;
+    this.noData=false;
+  }
+
+  setErrorOccured(){
+    this.showLoading = false;
+    this.noData = false;
+    this.errorOccured = true;
   }
 }
