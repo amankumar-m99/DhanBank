@@ -1,0 +1,57 @@
+<div class="container">
+    <p class="h5">All Cards</p>
+    <div class="">
+      <table class="table table-info table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#id</th>
+            <th scope="col">Card Number</th>
+            <th scope="col">Account Number</th>
+            <th scope="col">PIN</th>
+            <th scope="col">CVV</th>
+            <th scope="col">Expiry Month</th>
+            <th scope="col">Expiry Year</th>
+            <th scope="col">Invalid Attempts</th>
+            <th scope="col">Block Status</th>
+            <th scope="col">Active Status</th>
+            <th scope="col">Deletion Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!showLoading && !noData &&!errorOccured">
+            <tr *ngFor="let card of cards">
+            <th scope="row">{{card.id}}</th>
+            <td [ngClass]="getRowCss(card)">{{card.cardNumber}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.account.accountNumber}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.pin}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.cvv}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.expiryMonth}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.expiryYear}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.inValidAttempts}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.isBlocked}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.isActive}}</td>
+            <td [ngClass]="getRowCss(card)">{{card.isDeleted}}</td>
+            <td [ngClass]="getRowCss(card)">
+              <span class="mx-1" [ngClass]="!card.isDeleted?'text-dark':'text-light'"><i class="bi bi-eye"></i></span>
+              <span class="mx-1 text-pri☻mary"><i class="bi bi-pencil"></i></span>
+              <span *ngIf="card.isDeleted; else cardNotDeleted">
+                <span (click)="markAsDelete(card.id)"><i class="bi bi-trash3"></i></span>
+              </span>
+              <ng-template #cardNotDeleted>
+                <span class="mx-1 text-pri`mary"><i class="bi bi-recycle"></i></span>
+              </ng-template>
+          </tr>
+        </tbody>
+      </table>
+      <div class="mt-5" *ngIf="showLoading">
+        <app-growing-spinner></app-growing-spinner>
+      </div>
+      <div class="mt-5 fs-5 fw-semibold text-center" *ngIf="noData">
+        <img [src]="emptyDataImg" alt="empty data" width="250">
+        <p>No records found!</p>
+      </div>
+      <div class="mt-5 fs-5 fw-semibold text-center" *ngIf="errorOccured">
+        <p>Couldn't get data from server!</p>
+      </div>
+    </div>
+</div>

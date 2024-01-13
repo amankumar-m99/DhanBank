@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './menu/menu.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeComponent } from './home/home.component';
-import { WithdrawComponent } from './withdraw/withdraw.component';
-import { PinChangeComponent } from './pin-change/pin-change.component';
-import { BalanceComponent } from './balance/balance.component';
-import { TransferComponent } from './transfer/transfer.component';
-import { PinValidatorComponent } from './pin-validator/pin-validator.component';
-import { DepositComponent } from './deposit/deposit.component';
-import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
-import { InfoPageComponent } from './info-page/info-page.component';
-import { AdminComponent } from './admin/admin.component';
-import { RegisterCardComponent } from './register-card/register-card.component';
-import { RegisterAccountComponent } from './register-account/register-account.component';
-import { AllAccountsComponent } from './all-accounts/all-accounts.component';
-import { AllCardsComponent } from './all-cards/all-cards.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { WithdrawComponent } from './components/withdraw/withdraw.component';
+import { PinChangeComponent } from './components/pin-change/pin-change.component';
+import { BalanceComponent } from './components/balance/balance.component';
+import { TransferComponent } from './components/transfer/transfer.component';
+import { PinValidatorComponent } from './components/pin-validator/pin-validator.component';
+import { DepositComponent } from './components/deposit/deposit.component';
+import { QrScannerComponent } from './components/qr-scanner/qr-scanner.component';
+import { InfoPageComponent } from './components/info-page/info-page.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { RegisterCardComponent } from './components/register-card/register-card.component';
+import { RegisterAccountComponent } from './components/register-account/register-account.component';
+import { AllAccountsComponent } from './components/all-accounts/all-accounts.component';
+import { AllCardsComponent } from './components/all-cards/all-cards.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },

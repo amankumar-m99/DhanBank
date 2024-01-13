@@ -1,0 +1,53 @@
+<div class="container">
+    <p class="h5">All Accounts</p>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#id</th>
+                <th scope="col">A/C Number</th>
+                <th scope="col">A/C Holder Name</th>
+                <th scope="col">Balance</th>
+                <th scope="col">IFSC Code</th>
+                <th scope="col">Date Of Opening</th>
+                <th scope="col">Active Status</th>
+                <th scope="col">Deletion Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="!showLoading && !noData &&!errorOccured">
+              <tr *ngFor="let account of accounts">
+                <th [ngClass]="getRowCss(account)" scope="row">{{account.id}}</th>
+                <td [ngClass]="getRowCss(account)">{{account.accountNumber}}</td>
+                <td [ngClass]="getRowCss(account)">{{account.accountHolderName}}</td>
+                <td [ngClass]="getRowCss(account)">{{account.balance | currency:"INR":"symbol" }}</td>
+                <td [ngClass]="getRowCss(account)">{{account.ifscCode}}</td>
+                <td [ngClass]="getRowCss(account)">{{account.dateOfOpening}}</td>
+                <td [ngClass]="getRowCss(account)">{{account.active}}</td>
+                <td [ngClass]="getRowCss(account)">{{account.deleted}}</td>
+                <td [ngClass]="getRowCss(account)">
+                  <span class="mx-1" [ngClass]="account.deleted?'text-light':'text-dark'"><i class="bi bi-eye"></i></span>
+                  <span class="mx-1" [ngClass]="account.deleted?'text-light':'text-primary'"><i class="bi bi-pencil"></i></span>
+                  <span *ngIf="account.deleted; else accountNotDeleted">
+                    <span class="mx-1"><i class="bi bi-recycle text-light"></i></span>
+                  </span>
+                  <ng-template #accountNotDeleted>
+                    <span (click)="markAsDelete(account.id+'')"><i class="bi bi-trash3 text-danger"></i></span>
+                  </ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mt-5" *ngIf="showLoading">
+            <app-growing-spinner></app-growing-spinner>
+          </div>
+          <div class="mt-5" *ngIf="noData">
+            <img [src]="emptyDataImg" alt="empty data" width="250">
+            <p class="text-center">No records found!</p>
+          </div>
+          <div class="mt-5" *ngIf="errorOccured">
+            <p class="text-center fs-1"><i class="bi bi-database-fill-exclamation"></i></p>
+            <p class="text-center">Couldn't get data from server!</p>
+          </div>
+    </div>
+</div>
