@@ -122,10 +122,10 @@ export class AccountService {
       .pipe(catchError(this.handleError));
   }
 
-  markAccountAsDeletedById(accountId: AccountById): Observable<Account> {
+  markAccountAsDeletedById(accountById: AccountById): Observable<Account> {
     let url = this.baseURL + '/account/id/mark-delete';
     return this.httpClient
-      .patch<Account>(url, accountId)
+      .patch<Account>(url, accountById)
       .pipe(catchError(this.handleError));
   }
 

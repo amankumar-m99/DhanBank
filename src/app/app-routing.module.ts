@@ -16,6 +16,7 @@ import { RegisterCardComponent } from './components/register-card/register-card.
 import { RegisterAccountComponent } from './components/register-account/register-account.component';
 import { AllAccountsComponent } from './components/all-accounts/all-accounts.component';
 import { AllCardsComponent } from './components/all-cards/all-cards.component';
+import { EditAccountComponent } from './components/edit-account/edit-account.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
     {path:'register-account', component:RegisterAccountComponent},
     {path:'register-card', component:RegisterCardComponent},
   ] },
+  { path:'edit-account/:accountId', component:EditAccountComponent},
   { path:'info', component:InfoPageComponent },
   { path:'scan', component:QrScannerComponent },
   { path:'menu', component:MenuComponent },

@@ -1,5 +1,15 @@
 <div class="container">
-    <p class="h5">All Accounts</p>
+  <div class="row justify-content-between">
+    <div class="col-2">
+      <p class="h5">All Accounts</p>
+    </div>
+    <div class="col-2 mb-3 form-check">
+      <form [formGroup]="formGroup" novalidate>
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="hideDeleted" >
+        <label class="form-check-label" for="exampleCheck1">Hide Deleted Records</label>
+      </form>
+    </div>
+  </div>
     <div class="row">
         <table class="table table-striped">
             <thead>
@@ -16,23 +26,23 @@
               </tr>
             </thead>
             <tbody *ngIf="!showLoading && !noData &&!errorOccured">
-              <tr *ngFor="let account of accounts">
+              <tr *ngFor="let account of accounts" [class.d-none]="hideDeleted.value && account.deleted">
                 <th [ngClass]="getRowCss(account)" scope="row">{{account.id}}</th>
                 <td [ngClass]="getRowCss(account)">{{account.accountNumber}}</td>
                 <td [ngClass]="getRowCss(account)">{{account.accountHolderName}}</td>
                 <td [ngClass]="getRowCss(account)">{{account.balance | currency:"INR":"symbol" }}</td>
                 <td [ngClass]="getRowCss(account)">{{account.ifscCode}}</td>
                 <td [ngClass]="getRowCss(account)">{{account.dateOfOpening}}</td>
-                <td [ngClass]="getRowCss(account)">{{account.active}}</td>
-                <td [ngClass]="getRowCss(account)">{{account.deleted}}</td>
+                <td [ngClass]="getRowCss(account)">{{getActivationQuote(account.active)}}</td>
+                <td [ngClass]="getRowCss(account)">{{getDeletionQuote(account.deleted)}}</td>
                 <td [ngClass]="getRowCss(account)">
                   <span class="mx-1" [ngClass]="account.deleted?'text-light':'text-dark'"><i class="bi bi-eye"></i></span>
-                  <span class="mx-1" [ngClass]="account.deleted?'text-light':'text-primary'"><i class="bi bi-pencil"></i></span>
+                  <span class="mx-1" [ngClass]="account.deleted?'text-light':'text-primary'" (click)="editAccount(account.id)" ><i class="bi bi-pencil"></i></span>
                   <span *ngIf="account.deleted; else accountNotDeleted">
                     <span class="mx-1"><i class="bi bi-recycle text-light"></i></span>
                   </span>
                   <ng-template #accountNotDeleted>
-                    <span (click)="markAsDelete(account.id+'')"><i class="bi bi-trash3 text-danger"></i></span>
+                    <span (click)="markAsDelete(account.id)"><i class="bi bi-trash3 text-danger"></i></span>
                   </ng-template>
                 </td>
               </tr>

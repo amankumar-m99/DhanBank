@@ -4,6 +4,8 @@ import { AccountService } from '../../services/account/account.service';
 import { AccountByNumber } from '../../models/account/account-by-number';
 import { StaticData } from '../../static/static-data';
 import { AccountById } from '../../models/account/account-by-id';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-accounts',
@@ -19,10 +21,18 @@ export class AllAccountsComponent {
   noData=false;
   accountDeletedCss = ["bg-danger", "text-light"];
   accounntInactive = ["bg-warning", "text-dark"];
+  formGroup:FormGroup;
+  hideDeleted:AbstractControl;
   constructor(
-    private accountService:AccountService
+    private accountService:AccountService,
+    private formBuilder:FormBuilder,
+    private router:Router
   ){
     this.setShowLoading();
+    this.formGroup = this.formBuilder.group({
+      hideDeleted:[false]
+    });
+    this.hideDeleted = this.formGroup.controls['hideDeleted'];
     accountService.getAllAccounts().subscribe(response=>{
       this.accounts=response;
       if(this.accounts.length == 0){
@@ -73,18 +83,36 @@ export class AllAccountsComponent {
     this.accountService.unMarkAccountAsDeletedById(new AccountById(id)).subscribe()
   }
 
-  markAsDelete(id:string){
-    if(!confirm("Proceed with?"+ id)){
+  editAccount(id:number){
+    this.router.navigate(['edit-account', id.toString()]);
+  }
+
+  markAsDelete(id:number){
+    if(!confirm("Proceed with "+ id + " ?")){
       return;
     }
     this.accounts?.forEach(account=>{
-      if(account.id == parseInt(id)){
-        this.accountService.markAccountAsDeletedById(new AccountById(id)).subscribe(response=>{
+      if(account.id == id){
+        this.accountService.markAccountAsDeletedById(new AccountById(id.toString())).subscribe(response=>{
           account.deleted = true;
         }, error=>{
           alert("Couldn't do it.");
         })
       }
     });
+  }
+
+  getActivationQuote(isActive:boolean):string{
+    if(isActive){
+      return "Active";
+    }
+    return "Inactive";
+  }
+
+  getDeletionQuote(isDeleted:boolean):string{
+    if(isDeleted){
+      return "Deleted";
+    }
+    return "Not deleted";
   }
 }
