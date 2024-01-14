@@ -26,6 +26,7 @@ const routes: Routes = [
     {path:'register-account', component:RegisterAccountComponent},
     {path:'register-card', component:RegisterCardComponent},
   ] },
+  { path:'view-account/:accountId', component:EditAccountComponent},
   { path:'edit-account/:accountId', component:EditAccountComponent},
   { path:'info', component:InfoPageComponent },
   { path:'scan', component:QrScannerComponent },

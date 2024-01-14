@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 col-md-6 col-lg-5 mt-5 p-4 border border-dark border-1 rounded">
+        <p class="h5 text-center">Account Registration</p>
+        <hr/>
+        <form class="mt-5" novalidate (ngSubmit)="submit()">
+            <div class="mb-3">
+              <label for="acHolderName" class="form-label">Account Holder Name</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill-exclamation"></i></span>
+                <input type="text" class="form-control" id="acHolderName" aria-describedby="acHolderNameHelp"
+                formControlName="acHolderName">
+              </div>
+              <div id="acHolderNameHelp" class="form-text small text-danger">
+                Account holder name is required
+              </div>
+            </div>
+    
+            <div class="mb-3">
+              <label for="openingBalance" class="form-label">Opening Balance</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-currency-rupee"></i></span>
+                <input type="text" class="form-control" id="openingBalance" aria-describedby="openingBalanceHelp"
+                  formControlName="openingBalance">
+              </div>
+              <div id="openingBalanceHelp" class="form-text small text-danger">
+                Invalid value for account
+              </div>
+            </div>
+    
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" checked formControlName="generateATM">
+              <label class="form-check-label" for="exampleCheck1">Avail ATM Card&nbsp;<i class="bi bi-credit-card"></i></label>
+            </div>
+  
+            <div class="mb-3" formGroupName="atmCardDetails">
+              <div class="mb-3">
+                <label for="validity" class="form-label">Validity Period</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-check"></i></span>
+                  <select class="form-select" aria-label="Default select example" name="validity" id="validity" formControlName="validityPeriod">
+                    <!-- <option *ngFor="let validityPeriodOption of validityPeriodOptions" [value]="validityPeriodOption">{{validityPeriodOption}} Years</option> -->
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="immediateActive">
+                <label class="form-check-label" for="exampleCheck1">Activate immediately&nbsp;<i class="bi bi-lightning-fill"></i></label>
+              </div>
+            </div>
+            <hr/>
+            <button type="submit" class="btn btn-primary" [disabled]="disableSubmitBtn">
+              <span class="spinner-border spinner-border-sm" [class.d-none]="!disableSubmitBtn" aria-hidden="true"></span>
+              <span role="status">&nbsp;Submit{{submitTextSuffix}}</span>
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>

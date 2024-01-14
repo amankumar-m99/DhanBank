@@ -6,11 +6,11 @@ import { AccountById } from 'src/app/models/account/account-by-id';
 import { AccountService } from 'src/app/services/account/account.service';
 
 @Component({
-  selector: 'app-edit-account',
-  templateUrl: './edit-account.component.html',
-  styleUrls: ['./edit-account.component.css']
+  selector: 'app-view-account',
+  templateUrl: './view-account.component.html',
+  styleUrls: ['./view-account.component.css']
 })
-export class EditAccountComponent {
+export class ViewAccountComponent {
   accountId:string;
   editAccountForm:FormGroup;
   modalTitle = '';
@@ -40,7 +40,7 @@ export class EditAccountComponent {
           immediateActive: [true]
         })
       });
-    })
+    });
   }
 
   submit(){

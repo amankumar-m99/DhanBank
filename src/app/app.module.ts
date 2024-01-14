@@ -26,6 +26,7 @@ import { ModalComponent } from './util-components/modal/modal.component';
 import { GrowingSpinnerComponent } from './util-components/growing-spinner/growing-spinner.component';
 import { BorderSpinnerComponent } from './util-components/border-spinner/border-spinner.component';
 import { EditAccountComponent } from './components/edit-account/edit-account.component';
+import { ViewAccountComponent } from './components/view-account/view-account.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { EditAccountComponent } from './components/edit-account/edit-account.com
     ModalComponent,
     GrowingSpinnerComponent,
     BorderSpinnerComponent,
-    EditAccountComponent
+    EditAccountComponent,
+    ViewAccountComponent
   ],
   imports: [
     BrowserModule,

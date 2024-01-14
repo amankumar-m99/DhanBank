@@ -83,6 +83,9 @@ export class AllAccountsComponent {
     this.accountService.unMarkAccountAsDeletedById(new AccountById(id)).subscribe()
   }
 
+  viewAccount(id:number){
+    this.router.navigate(['view-account', id.toString()]);
+  }
   editAccount(id:number){
     this.router.navigate(['edit-account', id.toString()]);
   }
