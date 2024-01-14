@@ -79,15 +79,26 @@ export class AllAccountsComponent {
     this.errorOccured = true;
   }
 
-  restoreAccount(id:string){
-    this.accountService.unMarkAccountAsDeletedById(new AccountById(id)).subscribe()
-  }
-
   viewAccount(id:number){
     this.router.navigate(['view-account', id.toString()]);
   }
   editAccount(id:number){
     this.router.navigate(['edit-account', id.toString()]);
+  }
+
+  restoreAccount(id:number){
+    if(!confirm("Restore account "+ id + " ?")){
+      return;
+    }
+    this.accounts?.forEach(account=>{
+      if(account.id == id){
+        this.accountService.unMarkAccountAsDeletedById(new AccountById(id.toString())).subscribe(response=>{
+          account.deleted = false;
+        }, error=>{
+          alert("Couldn't do it.");
+        })
+      }
+    });
   }
 
   markAsDelete(id:number){
