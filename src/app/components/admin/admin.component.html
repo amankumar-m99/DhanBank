@@ -1,32 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img [src]="logoImgSrc" alt="Logo" width="60" class="d-inline-block align-text-top">
+            <span class="h5 mx-4">Dhan Admin</span>
+          </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" (click)="allAccounts()"><i class="bi bi-person"></i> All Accounts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="allCards()"><i class="bi bi-credit-card"></i> All Cards</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item"(click)="registerAccount()">New Account</a></li>
+              <li><a class="dropdown-item" (click)="registerCard()">New Card</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+          <span><i class="bi bi-person-circle"></i></span>
+        </form>
+    </div>
+</div>
+</nav>
+<hr>
 <div class="container">
-    <div class="row my-2 justify-content-between align-items-center">
-        <div class="col-4">
-            <span><img [src]="logoImgSrc" alt="dhan-logo img-fluid" width="65"></span>
-            <span class="h4 mx-4">Dhan Admin</span>
-        </div>
-        <div class="col-2 h6">
-            <span class="mx-2">User Name&nbsp;</span>
-            <span><i class="bi bi-person-circle"></i></span>
-        </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-primary mx-1" (click)="allAccounts()">
-                <i class="bi bi-person"></i> All Accounts</button>
-        </div>
-        <div class="col">
-            <button class="btn btn-primary mx-1" (click)="allCards()">
-                <i class="bi bi-credit-card"></i> All Cards</button>
-        </div>
-        <div class="col">
-            <button class="btn btn-primary mx-1" (click)="registerAccount()"><i class="bi bi-person-plus-fill"></i> New Account</button>
-        </div>
-        <div class="col">
-            <button class="btn btn-primary mx-1" (click)="registerCard()"><i class="bi bi-plus-lg"></i> New Card</button>
-        </div>
-    </div>
-    <hr>
     <div class="row my-1">
         <router-outlet></router-outlet>
     </div>
