@@ -114,4 +114,42 @@ export class AllCardsComponent {
       }
     });
   }
+
+  getExpiryMonth(month:number):string{
+    switch(month){
+      case 1: return "January";
+      case 2: return "February";
+      case 3: return "March";
+      case 4: return "April";
+      case 5: return "March";
+      case 6: return "June";
+      case 7: return "July";
+      case 8: return "August";
+      case 9: return "September";
+      case 10: return "October";
+      case 11: return "November";
+      case 12: return "December";
+    }
+    return "N/A";
+  }
+
+  getBlockedQuote(isBlocked:boolean):string{
+    if(isBlocked){
+      return "Blocked";
+    }
+    return "Not Blocked";
+  }
+  getActivationQuote(isActive:boolean):string{
+    if(isActive){
+      return "Active";
+    }
+    return "Inactive";
+  }
+
+  getDeletionQuote(isDeleted:boolean):string{
+    if(isDeleted){
+      return "Deleted";
+    }
+    return "Not deleted";
+  }
 }

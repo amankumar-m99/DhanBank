@@ -50,13 +50,13 @@ export class RegisterAccountComponent {
     let balance = this.registerAccountForm.value.openingBalance;
     let generateATM = this.registerAccountForm.value.generateATM;
     let validityPeriod = this.registerAccountForm.get('atmCardDetails')?.get('validityPeriod')?.getRawValue();
-    alert(validityPeriod);
+    let immediateActive = this.registerAccountForm.get('atmCardDetails')?.get('immediateActive')?.getRawValue();
     if(!Utils.isStringNumeric(balance)){
       console.log(balance);
       alert("Balance is not numeric");
       return;
     }
-    let accountAdd = new AccountAdd(name, parseInt(balance), generateATM);
+    let accountAdd = new AccountAdd(name, parseInt(balance), generateATM, validityPeriod, immediateActive);
     this.disableSubmitBtn = true;
     this.submitTextSuffix = 'ting...';
     this.accountService.addAccount(accountAdd).subscribe(

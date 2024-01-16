@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row justify-content-between">
     <div class="col-2">
       <p class="h5">All Cards</p>
     </div>
@@ -35,12 +35,12 @@
             <td [ngClass]="getRowCss(card)">{{card.account.accountNumber}}</td>
             <td [ngClass]="getRowCss(card)">{{card.pin}}</td>
             <td [ngClass]="getRowCss(card)">{{card.cvv}}</td>
-            <td [ngClass]="getRowCss(card)">{{card.expiryMonth}}</td>
+            <td [ngClass]="getRowCss(card)">{{getExpiryMonth(card.expiryMonth)}}</td>
             <td [ngClass]="getRowCss(card)">{{card.expiryYear}}</td>
             <td [ngClass]="getRowCss(card)">{{card.inValidAttempts}}</td>
-            <td [ngClass]="getRowCss(card)">{{card.isBlocked}}</td>
-            <td [ngClass]="getRowCss(card)">{{card.isActive}}</td>
-            <td [ngClass]="getRowCss(card)">{{card.isDeleted}}</td>
+            <td [ngClass]="getRowCss(card)">{{getBlockedQuote(card.isBlocked)}}</td>
+            <td [ngClass]="getRowCss(card)">{{getActivationQuote(card.isActive)}}</td>
+            <td [ngClass]="getRowCss(card)">{{getDeletionQuote(card.isDeleted)}}</td>
             <td [ngClass]="getRowCss(card)">
               <span class="mx-1" [ngClass]="card.isDeleted?'text-light':'text-dark'" (click)="viewCard(card.id)"><i class="bi bi-eye"></i></span>
               <span class="mx-1" [ngClass]="card.isDeleted?'text-light':'text-primary'" (click)="editCard(card.id)"><i class="bi bi-pencil"></i></span>
