@@ -17,6 +17,9 @@ import { RegisterAccountComponent } from './components/register-account/register
 import { AllAccountsComponent } from './components/all-accounts/all-accounts.component';
 import { AllCardsComponent } from './components/all-cards/all-cards.component';
 import { EditAccountComponent } from './components/edit-account/edit-account.component';
+import { EditCardComponent } from './components/edit-card/edit-card.component';
+import { ViewAccountComponent } from './components/view-account/view-account.component';
+import { ViewCardComponent } from './components/view-card/view-card.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },
@@ -26,8 +29,10 @@ const routes: Routes = [
     {path:'register-account', component:RegisterAccountComponent},
     {path:'register-card', component:RegisterCardComponent},
   ] },
-  { path:'view-account/:accountId', component:EditAccountComponent},
+  { path:'view-account/:accountId', component:ViewAccountComponent},
   { path:'edit-account/:accountId', component:EditAccountComponent},
+  { path:'view-card/:cardId', component:ViewCardComponent},
+  { path:'edit-card/:cardId', component:EditCardComponent},
   { path:'info', component:InfoPageComponent },
   { path:'scan', component:QrScannerComponent },
   { path:'menu', component:MenuComponent },

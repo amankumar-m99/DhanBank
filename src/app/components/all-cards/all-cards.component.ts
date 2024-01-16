@@ -86,7 +86,7 @@ export class AllCardsComponent {
   }
 
   restoreCard(id:number){
-    if(!confirm("Restore account "+ id + " ?")){
+    if(!confirm("Restore card "+ id + " ?")){
       return;
     }
     this.cards?.forEach(card=>{
