@@ -4,6 +4,7 @@ import { AccountAdd } from '../../models/account/add/account-add';
 import { AccountService } from '../../services/account/account.service';
 import { Utils } from '../../utils/utils';
 import { StaticData } from '../../static/static-data';
+import { ATMCardDetails } from 'src/app/models/card/atm-card-details';
 
 @Component({
   selector: 'app-register-account',
@@ -56,7 +57,7 @@ export class RegisterAccountComponent {
       alert("Balance is not numeric");
       return;
     }
-    let accountAdd = new AccountAdd(name, parseInt(balance), generateATM, validityPeriod, immediateActive);
+    let accountAdd = new AccountAdd(name, parseInt(balance), generateATM, new ATMCardDetails(validityPeriod, immediateActive));
     this.disableSubmitBtn = true;
     this.submitTextSuffix = 'ting...';
     this.accountService.addAccount(accountAdd).subscribe(

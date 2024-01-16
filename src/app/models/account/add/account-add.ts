@@ -1,9 +1,10 @@
+import { ATMCardDetails } from "../../card/atm-card-details";
+
 export class AccountAdd{
     constructor(
         public accountHolderName:string,
         public openingBalance:number,
         public isCardRequested:boolean=false,
-        public immediateActive:boolean=true,
-        public validityPeriod:number=8
+        public atmCardDetails:ATMCardDetails
     ){}
 }

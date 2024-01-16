@@ -29,7 +29,7 @@
           </tr>
         </thead>
         <tbody *ngIf="!showLoading && !noData &&!errorOccured">
-          <tr *ngFor="let card of cards">
+          <tr *ngFor="let card of cards" [class.d-none]="hideDeleted.value && card.isDeleted">
             <th scope="row">{{card.id}}</th>
             <td [ngClass]="getRowCss(card)">{{card.cardNumber}}</td>
             <td [ngClass]="getRowCss(card)">{{card.account.accountNumber}}</td>
