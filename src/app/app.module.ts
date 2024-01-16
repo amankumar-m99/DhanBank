@@ -27,6 +27,8 @@ import { GrowingSpinnerComponent } from './util-components/growing-spinner/growi
 import { BorderSpinnerComponent } from './util-components/border-spinner/border-spinner.component';
 import { EditAccountComponent } from './components/edit-account/edit-account.component';
 import { ViewAccountComponent } from './components/view-account/view-account.component';
+import { ViewCardComponent } from './components/view-card/view-card.component';
+import { EditCardComponent } from './components/edit-card/edit-card.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ViewAccountComponent } from './components/view-account/view-account.com
     GrowingSpinnerComponent,
     BorderSpinnerComponent,
     EditAccountComponent,
-    ViewAccountComponent
+    ViewAccountComponent,
+    ViewCardComponent,
+    EditCardComponent
   ],
   imports: [
     BrowserModule,

@@ -19,8 +19,6 @@ export class AllAccountsComponent {
   showLoading = false;
   errorOccured = false;
   noData=false;
-  accountDeletedCss = ["bg-danger", "text-light"];
-  accounntInactive = ["bg-warning", "text-dark"];
   formGroup:FormGroup;
   hideDeleted:AbstractControl;
   constructor(
@@ -45,6 +43,7 @@ export class AllAccountsComponent {
       this.setErrorOccured();
     })
   }
+
   getRowCss(account:Account){
     let obj = {
       "text-dark" : !account.active,

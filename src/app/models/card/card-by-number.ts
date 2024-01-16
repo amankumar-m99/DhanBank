@@ -1,3 +1,3 @@
-export class CardNumber{
+export class CardByNumber{
     constructor(public cardNumber:string){}
 }

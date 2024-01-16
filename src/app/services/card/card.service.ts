@@ -3,8 +3,8 @@ import { StaticData } from '../../static/static-data';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Card } from '../../models/card/card';
-import { CardId } from '../../models/card/card-id';
-import { CardNumber } from '../../models/card/card-number';
+import { CardById } from '../../models/card/card-by-id';
+import { CardByNumber } from '../../models/card/card-by-number';
 import { CardPinChange } from '../../models/card/card-pin-change';
 import { CardAdd } from '../../models/card/card-add';
 
@@ -21,13 +21,13 @@ export class CardService {
     return this.httpClient.get<Card[]>(url).pipe(catchError(this.handleError));
   }
 
-  getCardById(cardId: CardId): Observable<Card> {
-    let url = this.baseURL + '/cardbyid/' + cardId.cardId;
+  getCardById(cardById: CardById): Observable<Card> {
+    let url = this.baseURL + '/cardbyid/' + cardById.cardId;
     return this.httpClient.get<Card>(url).pipe(catchError(this.handleError));
   }
 
-  getCardByNumber(cardNumber: CardNumber): Observable<Card> {
-    let url = this.baseURL + '/cardbynumber/' + cardNumber.cardNumber;
+  getCardByNumber(cardByNumber: CardByNumber): Observable<Card> {
+    let url = this.baseURL + '/cardbynumber/' + cardByNumber.cardNumber;
     return this.httpClient.get<Card>(url).pipe(catchError(this.handleError));
   }
 
@@ -45,31 +45,31 @@ export class CardService {
       .pipe(catchError(this.handleError));
   }
 
-  recordInValidAttemptsById(cardId: CardId): Observable<Card> {
+  recordInValidAttemptsById(cardById: CardById): Observable<Card> {
     let url = this.baseURL + '/card/id/record-invalidattempts';
     return this.httpClient
-      .patch<Card>(url, cardId)
+      .patch<Card>(url, cardById)
       .pipe(catchError(this.handleError));
   }
 
-  recordInValidAttemptsByNumber(cardNumber: CardNumber): Observable<Card> {
+  recordInValidAttemptsByNumber(cardByNumber: CardByNumber): Observable<Card> {
     let url = this.baseURL + '/card/number/record-invalidattempts';
     return this.httpClient
-      .patch<Card>(url, cardNumber)
+      .patch<Card>(url, cardByNumber)
       .pipe(catchError(this.handleError));
   }
 
-  resetInValidAttemptsById(cardId: CardId): Observable<Card> {
+  resetInValidAttemptsById(cardById: CardById): Observable<Card> {
     let url = this.baseURL + '/card/id/reset-invalidattempts';
     return this.httpClient
-      .patch<Card>(url, cardId)
+      .patch<Card>(url, cardById)
       .pipe(catchError(this.handleError));
   }
 
-  resetInValidAttemptsByNumber(cardNumber: CardNumber): Observable<Card> {
+  resetInValidAttemptsByNumber(cardByumber: CardByNumber): Observable<Card> {
     let url = this.baseURL + '/card/number/reset-invalidattempts';
     return this.httpClient
-      .patch<Card>(url, cardNumber)
+      .patch<Card>(url, cardByumber)
       .pipe(catchError(this.handleError));
   }
 
@@ -87,69 +87,69 @@ export class CardService {
       .pipe(catchError(this.handleError));
   }
 
-  blockCardById(cardId: CardId): Observable<Card> {
+  blockCardById(cardById: CardById): Observable<Card> {
     let url = this.baseURL + '/card/id/block';
     return this.httpClient
-      .patch<Card>(url, cardId)
+      .patch<Card>(url, cardById)
       .pipe(catchError(this.handleError));
   }
 
-  blockCardByNumber(cardNumber: CardNumber): Observable<Card> {
+  blockCardByNumber(cardByNumber: CardByNumber): Observable<Card> {
     let url = this.baseURL + '/card/number/block';
     return this.httpClient
-      .patch<Card>(url, cardNumber)
+      .patch<Card>(url, cardByNumber)
       .pipe(catchError(this.handleError));
   }
 
-  unBlockCardById(cardId: CardId): Observable<Card> {
+  unBlockCardById(cardById: CardById): Observable<Card> {
     let url = this.baseURL + '/card/id/unblock';
     return this.httpClient
-      .patch<Card>(url, cardId)
+      .patch<Card>(url, cardById)
       .pipe(catchError(this.handleError));
   }
 
-  unBlockCardByNumber(cardNumber: CardNumber): Observable<Card> {
+  unBlockCardByNumber(cardByNumber: CardByNumber): Observable<Card> {
     let url = this.baseURL + '/card/number/unblock';
     return this.httpClient
-      .patch<Card>(url, cardNumber)
+      .patch<Card>(url, cardByNumber)
       .pipe(catchError(this.handleError));
   }
 
-  markCardByIdAsDeleted(cardId: CardId): Observable<Card> {
+  markCardByIdAsDeleted(cardById: CardById): Observable<Card> {
     let url = this.baseURL + '/card/id/mark-delete/';
     return this.httpClient
-      .patch<Card>(url, cardId)
+      .patch<Card>(url, cardById)
       .pipe(catchError(this.handleError));
   }
 
-  markCardByNumberAsDeleted(cardNumber: CardNumber): Observable<Card> {
+  markCardByNumberAsDeleted(cardyByNumber: CardByNumber): Observable<Card> {
     let url = this.baseURL + '/card/number/mark-delete/';
     return this.httpClient
-      .patch<Card>(url, cardNumber)
+      .patch<Card>(url, cardyByNumber)
       .pipe(catchError(this.handleError));
   }
 
-  unMarkCardByIdAsDeleted(cardId: CardId): Observable<Card> {
+  unMarkCardByIdAsDeleted(cardById: CardById): Observable<Card> {
     let url = this.baseURL + '/card/id/unmark-delete/';
     return this.httpClient
-      .patch<Card>(url, cardId)
+      .patch<Card>(url, cardById)
       .pipe(catchError(this.handleError));
   }
 
-  unMarkCardByNumberAsDeleted(cardNumber: CardNumber): Observable<Card> {
+  unMarkCardByNumberAsDeleted(cardByNumber: CardByNumber): Observable<Card> {
     let url = this.baseURL + '/card/number/unmark-delete/';
     return this.httpClient
-      .patch<Card>(url, cardNumber)
+      .patch<Card>(url, cardByNumber)
       .pipe(catchError(this.handleError));
   }
 
-  deleteCardByIdFromDatabase(cardId: CardId): Observable<Card> {
-    let url = this.baseURL + '/card/id/' + cardId.cardId;
+  deleteCardByIdFromDatabase(cardById: CardById): Observable<Card> {
+    let url = this.baseURL + '/card/id/' + cardById.cardId;
     return this.httpClient.delete<Card>(url).pipe(catchError(this.handleError));
   }
 
-  deleteCardByNumberFromDatabase(cardNumber: CardNumber): Observable<Card> {
-    let url = this.baseURL + '/card/number/' + cardNumber.cardNumber;
+  deleteCardByNumberFromDatabase(cardByNumber: CardByNumber): Observable<Card> {
+    let url = this.baseURL + '/card/number/' + cardByNumber.cardNumber;
     return this.httpClient.delete<Card>(url).pipe(catchError(this.handleError));
   }
 

@@ -4,7 +4,7 @@ import { StaticData } from '../../static/static-data';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Utils } from '../../utils/utils';
 import { CardService } from '../../services/card/card.service';
-import { CardId } from '../../models/card/card-id';
+import { CardById } from '../../models/card/card-by-id';
 
 @Component({
   selector: 'app-pin-validator',
@@ -56,13 +56,13 @@ export class PinValidatorComponent {
     }
     else if(StaticData.card.pin != enteredPin){
       alert("Incorrect pin");
-      this.cardService.recordInValidAttemptsById(new CardId(StaticData.card.id)).subscribe(response=>{
+      this.cardService.recordInValidAttemptsById(new CardById(StaticData.card.id.toString())).subscribe(response=>{
         StaticData.card = response;
       });
       this.router.navigate(['home']);
       return;
     }
-    this.cardService.resetInValidAttemptsById(new CardId(StaticData.card.id)).subscribe(response=>{
+    this.cardService.resetInValidAttemptsById(new CardById(StaticData.card.id.toString())).subscribe(response=>{
       StaticData.card = response;
     });
     this.router.navigate([this.menuId]);

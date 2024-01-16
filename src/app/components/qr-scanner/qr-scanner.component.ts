@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { StaticData } from '../../static/static-data';
-import { CardNumber } from '../../models/card/card-number';
+import { CardByNumber } from '../../models/card/card-by-number';
 import { CardService } from '../../services/card/card.service';
 
 @Component({
@@ -36,7 +36,7 @@ export class QrScannerComponent {
     document.getElementById("scanner-modal")?.classList.add("visible-true");
     if (result.hasContent) {
       StaticData.scannedCardNumber = result.content;
-      this.cardService.getCardByNumber(new CardNumber(result.content)).subscribe(responseCard=>{
+      this.cardService.getCardByNumber(new CardByNumber(result.content)).subscribe(responseCard=>{
         if(responseCard == null){
           StaticData.info = "Invalid card!";
           this.router.navigate(['info']);

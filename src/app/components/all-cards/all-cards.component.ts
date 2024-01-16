@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { Card } from '../../models/card/card';
 import { StaticData } from '../../static/static-data';
 import { CardService } from '../../services/card/card.service';
-import { CardId } from '../../models/card/card-id';
+import { CardById } from '../../models/card/card-by-id';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-cards',
@@ -12,16 +14,23 @@ import { CardId } from '../../models/card/card-id';
 export class AllCardsComponent {
   assetPath:string = StaticData.assetsDirPath;
   emptyDataImg = this.assetPath.concat("imgs/empty-box.png");
-  isDataAvailable = false;
-  cards?:Card[];
+  cards:Card[] = [];
   showLoading = false;
   errorOccured = false;
   noData=false;
+  formGroup:FormGroup;
+  hideDeleted:AbstractControl;
 
   constructor(
-    private cardService:CardService
+    private cardService:CardService,
+    private formBuilder:FormBuilder,
+    private router:Router
   ){
     this.setShowLoading();
+    this.formGroup = this.formBuilder.group({
+      hideDeleted:[false]
+    });
+    this.hideDeleted = this.formGroup.controls['hideDeleted'];
     cardService.getAllCards().subscribe(response=>{
       this.cards = response;
       if(this.cards.length == 0){
@@ -43,21 +52,6 @@ export class AllCardsComponent {
       "text-light": card.isDeleted
     };
     return obj;
-  }
-
-  markAsDelete(id:number){
-    if(!confirm("Proceed with?"+ id)){
-      return;
-    }
-    this.cards?.forEach(card=>{
-      if(card.id == id){
-        this.cardService.markCardByIdAsDeleted(new CardId(id)).subscribe(response=>{
-          card.isDeleted = true;
-        }, error=>{
-          alert("Couldn't do it.");
-        })
-      }
-    });
   }
 
   setShowLoading(){
@@ -82,5 +76,42 @@ export class AllCardsComponent {
     this.showLoading = false;
     this.noData = false;
     this.errorOccured = true;
+  }
+
+  viewCard(id:number){
+    this.router.navigate(['view-card', id.toString()]);
+  }
+  editCard(id:number){
+    this.router.navigate(['edit-card', id.toString()]);
+  }
+
+  restoreCard(id:number){
+    if(!confirm("Restore account "+ id + " ?")){
+      return;
+    }
+    this.cards?.forEach(card=>{
+      if(card.id == id){
+        this.cardService.unMarkCardByIdAsDeleted(new CardById(id.toString())).subscribe(response=>{
+          card.isDeleted = false;
+        }, error=>{
+          alert("Couldn't do it.");
+        })
+      }
+    });
+  }
+
+  markAsDelete(id:number){
+    if(!confirm("Proceed with?"+ id)){
+      return;
+    }
+    this.cards?.forEach(card=>{
+      if(card.id == id){
+        this.cardService.markCardByIdAsDeleted(new CardById(id.toString())).subscribe(response=>{
+          card.isDeleted = true;
+        }, error=>{
+          alert("Couldn't do it.");
+        })
+      }
+    });
   }
 }

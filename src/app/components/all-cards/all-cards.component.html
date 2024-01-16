@@ -1,7 +1,17 @@
-<div class="container">
-    <p class="h5">All Cards</p>
-    <div class="">
-      <table class="table table-info table-striped">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <p class="h5">All Cards</p>
+    </div>
+    <div class="col-2 mb-3 form-check">
+      <form [formGroup]="formGroup" novalidate>
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="hideDeleted" >
+        <label class="form-check-label" for="exampleCheck1">Hide Deleted Records</label>
+      </form>
+    </div>
+  </div>
+    <div class="row">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#id</th>
@@ -19,7 +29,7 @@
           </tr>
         </thead>
         <tbody *ngIf="!showLoading && !noData &&!errorOccured">
-            <tr *ngFor="let card of cards">
+          <tr *ngFor="let card of cards">
             <th scope="row">{{card.id}}</th>
             <td [ngClass]="getRowCss(card)">{{card.cardNumber}}</td>
             <td [ngClass]="getRowCss(card)">{{card.account.accountNumber}}</td>
@@ -32,14 +42,15 @@
             <td [ngClass]="getRowCss(card)">{{card.isActive}}</td>
             <td [ngClass]="getRowCss(card)">{{card.isDeleted}}</td>
             <td [ngClass]="getRowCss(card)">
-              <span class="mx-1" [ngClass]="!card.isDeleted?'text-dark':'text-light'"><i class="bi bi-eye"></i></span>
-              <span class="mx-1 text-pri☻mary"><i class="bi bi-pencil"></i></span>
-              <span *ngIf="card.isDeleted; else cardNotDeleted">
-                <span (click)="markAsDelete(card.id)"><i class="bi bi-trash3"></i></span>
+              <span class="mx-1" [ngClass]="card.isDeleted?'text-light':'text-dark'" (click)="viewCard(card.id)"><i class="bi bi-eye"></i></span>
+              <span class="mx-1" [ngClass]="card.isDeleted?'text-light':'text-primary'" (click)="editCard(card.id)"><i class="bi bi-pencil"></i></span>
+              <span *ngIf="card.isDeleted; else accountNotDeleted">
+                <span class="mx-1" (click)="restoreCard(card.id)"><i class="bi bi-recycle text-light"></i></span>
               </span>
-              <ng-template #cardNotDeleted>
-                <span class="mx-1 text-pri`mary"><i class="bi bi-recycle"></i></span>
+              <ng-template #accountNotDeleted>
+                <span (click)="markAsDelete(card.id)"><i class="bi bi-trash3 text-danger"></i></span>
               </ng-template>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -51,6 +62,7 @@
         <p>No records found!</p>
       </div>
       <div class="mt-5 fs-5 fw-semibold text-center" *ngIf="errorOccured">
+        <p class="text-center fs-1"><i class="bi bi-database-fill-exclamation"></i></p>
         <p>Couldn't get data from server!</p>
       </div>
     </div>
