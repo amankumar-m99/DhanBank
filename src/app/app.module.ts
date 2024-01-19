@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule} from '@angular/forms';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,9 @@ import { EditAccountComponent } from './components/edit-account/edit-account.com
 import { ViewAccountComponent } from './components/view-account/view-account.component';
 import { ViewCardComponent } from './components/view-card/view-card.component';
 import { EditCardComponent } from './components/edit-card/edit-card.component';
+import { YoutubeComponent } from './youtube/youtube.component';
+import { CardTemplateComponent } from './components/card-template/card-template.component';
+import { CardQrCodeComponent } from './components/card-qr-code/card-qr-code.component';
 
 @NgModule({
   declarations: [
@@ -55,14 +59,18 @@ import { EditCardComponent } from './components/edit-card/edit-card.component';
     EditAccountComponent,
     ViewAccountComponent,
     ViewCardComponent,
-    EditCardComponent
+    EditCardComponent,
+    YoutubeComponent,
+    CardTemplateComponent,
+    CardQrCodeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
