@@ -20,6 +20,7 @@ import { EditAccountComponent } from './components/edit-account/edit-account.com
 import { EditCardComponent } from './components/edit-card/edit-card.component';
 import { ViewAccountComponent } from './components/view-account/view-account.component';
 import { ViewCardComponent } from './components/view-card/view-card.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path:'transfer', component:TransferComponent },
   { path:'pin-change', component:PinChangeComponent },
   { path:'balance', component:BalanceComponent },
+  { path:'test', component:TestComponent },
   { path:'', redirectTo:'home', pathMatch:'full' },
   { path:'**', component:PageNotFoundComponent }
 ];

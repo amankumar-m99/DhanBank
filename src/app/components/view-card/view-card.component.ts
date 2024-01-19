@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Account } from 'src/app/models/account/account';
@@ -13,7 +13,7 @@ import { StaticData } from 'src/app/static/static-data';
   templateUrl: './view-card.component.html',
   styleUrls: ['./view-card.component.css']
 })
-export class ViewCardComponent {
+export class ViewCardComponent implements OnInit, OnChanges{
   assetPath:string = StaticData.assetsDirPath;
   emptyDataImg = this.assetPath.concat("imgs/man.png");
   cardId:string = "<Card ID>";
@@ -37,7 +37,22 @@ export class ViewCardComponent {
     this.cardId = this.activatedRoute.snapshot.params['cardId'];
     this.account = new Account();
     this.card = new Card(this.account);
-    this.viewCardForm = this.formBuilder.group({})
+    this.viewCardForm = this.formBuilder.group({
+      cardNumber : [this.card.cardNumber],
+        cardHolderName : [this.acHolderName],
+        account : [this.card.account.accountNumber],
+        expiryMonth : [this.card.expiryMonth],
+        expiryYear : [this.card.expiryYear],
+        cvv : [this.card.cvv],
+        pin : [this.card.pin],
+        blockedStatus : [this.card.isBlocked],
+        deletedStatus : [this.card.isDeleted]
+    });
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.isQrDataAvailable = true;
+  }
+  ngOnInit(): void {
     this.cardService.getCardById(new CardById(this.cardId)).subscribe(response=>{
       this.card = response;
       this.account = response.account;
@@ -56,4 +71,5 @@ export class ViewCardComponent {
       this.isQrDataAvailable = true;
     });
   }
+
 }

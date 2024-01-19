@@ -32,6 +32,7 @@ import { ViewCardComponent } from './components/view-card/view-card.component';
 import { EditCardComponent } from './components/edit-card/edit-card.component';
 import { CardTemplateComponent } from './components/card-template/card-template.component';
 import { CardQrCodeComponent } from './components/card-qr-code/card-qr-code.component';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CardQrCodeComponent } from './components/card-qr-code/card-qr-code.comp
     ViewCardComponent,
     EditCardComponent,
     CardTemplateComponent,
-    CardQrCodeComponent
+    CardQrCodeComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

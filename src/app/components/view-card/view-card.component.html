@@ -7,7 +7,12 @@
               <p class="h3 mb-3">{{acHolderName}}</p>
             </div>
             <div class="col-5">
-              <app-card-template [card]="card" [isQRDataAvailable]="isQrDataAvailable"></app-card-template>
+                <div *ngIf="isQrDataAvailable else nott">
+                    <app-card-template [card]="card" [isQRDataAvailable]="isQrDataAvailable"></app-card-template>
+                </div>
+                <ng-template #nott>
+                    <app-card-template [card]="card" [isQRDataAvailable]="isQrDataAvailable"></app-card-template>
+                </ng-template>
             </div>
         </div>
         <hr/>
@@ -73,11 +78,11 @@
         <div class="mb-3">
           <label class="form-label">Block Status</label>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="blockStatus" id="activeRadio" formControlName="blockStatus" checked>
+            <input class="form-check-input" type="radio" name="blockedStatus" id="activeRadio" formControlName="blockedStatus" checked>
             <label class="form-check-label" for="activeRadio">Active</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="blockStatus" id="blockedRadio" formControlName="blockStatus">
+            <input class="form-check-input" type="radio" name="blockedStatus" id="blockedRadio" formControlName="blockedStatus">
             <label class="form-check-label" for="blockedRadio">UnBlocked</label>
           </div>
         </div>
@@ -85,11 +90,11 @@
         <div class="mb-3">
           <label class="form-label">Deletion Status</label>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="deletionStatus" id="deletedRadio" checked formControlName="deletionStatus">
+            <input class="form-check-input" type="radio" name="deletedStatus" id="deletedRadio" checked formControlName="deletedStatus">
             <label class="form-check-label" for="deletedRadio">Deleted</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="deletionStatus" id="notDeletedRadio" formControlName="deletionStatus">
+            <input class="form-check-input" type="radio" name="deletedStatus" id="notDeletedRadio" formControlName="deletedStatus">
             <label class="form-check-label" for="notDeletedRadio">Not Deleted</label>
           </div>
         </div>
