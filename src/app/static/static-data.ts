@@ -6,7 +6,7 @@ import { Card } from "../models/card/card";
 
 export class StaticData{
     public static assetsDirPath="../../assets/";
-    public static baseURL="http://localhost:8080";
+    public static baseURL="http://192.168.1.4:8080";
     public static scannedCardNumber="";
     public static card:Card;
     public static account:Account;

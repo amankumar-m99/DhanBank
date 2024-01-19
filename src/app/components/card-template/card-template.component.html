@@ -1,0 +1,33 @@
+<div class="p-3 border border-2 border-info">
+    <div class="row justify-content-start align-items-center">
+        <div class="col-2">
+            <img [src]="bankImg" alt="empty data" width="30">
+        </div>
+        <div class="col-4">
+            <p class="h5">Dhan Bank</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-evenly align-items-center px-2">
+        <div class="col-7">
+            <p class="h5 my-3">{{cardNumber}}</p>
+            <span class="h6 my-3">Valid Up To&nbsp;</span>
+            <span class="my-2 fw-bold">{{expiry}}</span>
+            <br>
+            <span class="h6 my-3">CVV&nbsp;</span>
+            <span class="my-2 fw-bold">{{cvv}}</span>
+            <p class="h6 my-3">{{cardHolderName | uppercase}}</p>
+        </div>
+        <div class="col-5 border border-2 text-center">
+            <div *ngIf="isQRDataAvailable then qrDataAvailable else qrDataNotAvailable"></div>
+            <ng-template #qrDataAvailable>
+                <app-card-qr-code [qrData]="qrData"></app-card-qr-code>
+            </ng-template>
+            <ng-template #qrDataNotAvailable>
+                <p class="fs-1 fw-bold"><i class="bi bi-qr-code-scan"></i></p>
+                <p class="fs-6 text-danger">QR Data could not be loaded!</p>
+            </ng-template>
+        </div>
+    </div>
+    <hr>
+</div>
