@@ -1,7 +1,7 @@
 <div class="p-3 border border-2 border-info">
     <div class="row justify-content-start align-items-center">
         <div class="col-2">
-            <img [src]="bankImg" alt="empty data" width="30">
+            <img [src]="bankImg" alt="bank logo" width="30">
         </div>
         <div class="col-4">
             <p class="h5">Dhan Bank</p>
@@ -12,7 +12,9 @@
         <div class="col-7">
             <p class="h5 my-3">{{cardNumber}}</p>
             <span class="h6 my-3">Valid Up To&nbsp;</span>
-            <span class="my-2 fw-bold">{{expiry}}</span>
+            <span class="my-2 fw-bold">{{expiryMonth}}</span>
+            <span class="my-2 fw-bold">/</span>
+            <span class="my-2 fw-bold">{{expiryYear}}</span>
             <br>
             <span class="h6 my-3">CVV&nbsp;</span>
             <span class="my-2 fw-bold">{{cvv}}</span>

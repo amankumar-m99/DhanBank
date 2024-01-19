@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card-qr-code.component.css']
 })
 export class CardQrCodeComponent {
-  @Input() qrData = '12345';
+  @Input() qrData = '';
   qrWidth = 180;
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Account } from 'src/app/models/account/account';
 import { AccountById } from 'src/app/models/account/account-by-id';
 import { Card } from 'src/app/models/card/card';
 import { CardById } from 'src/app/models/card/card-by-id';
@@ -14,8 +15,8 @@ import { StaticData } from 'src/app/static/static-data';
 })
 export class ViewCardComponent {
   assetPath:string = StaticData.assetsDirPath;
-  emptyDataImg = this.assetPath.concat("imgs/aman_pic.jpg");
-  cardId:string;
+  emptyDataImg = this.assetPath.concat("imgs/man.png");
+  cardId:string = "<Card ID>";
   viewCardForm:FormGroup;
   modalTitle = '';
   modalTitleStyleClass = '';
@@ -23,7 +24,10 @@ export class ViewCardComponent {
   modalCloseBtnStyleClass = '';
   submitTextSuffix = '';
   disableSubmitBtn = false;
-  card:Card|null;
+  card:Card;
+  account:Account;
+  isQrDataAvailable = false;
+  acHolderName:string="<AC Holder Name>";
 
   constructor(
     private activatedRoute:ActivatedRoute,
@@ -31,13 +35,25 @@ export class ViewCardComponent {
     private cardService:CardService
   ){
     this.cardId = this.activatedRoute.snapshot.params['cardId'];
-    this.card=null;
-    this.viewCardForm = this.formBuilder.group({
-      cardNumber : ['XXXX-XXXX-XXXX-XXXX'],
-    })
+    this.account = new Account();
+    this.card = new Card(this.account);
+    this.viewCardForm = this.formBuilder.group({})
     this.cardService.getCardById(new CardById(this.cardId)).subscribe(response=>{
       this.card = response;
-      this.viewCardForm = this.formBuilder.group({})
+      this.account = response.account;
+      this.acHolderName = response.account.accountHolderName;
+      this.viewCardForm = this.formBuilder.group({
+        cardNumber : [response.cardNumber],
+        cardHolderName : [this.acHolderName],
+        account : [this.card.account.accountNumber],
+        expiryMonth : [this.card.expiryMonth],
+        expiryYear : [this.card.expiryYear],
+        cvv : [this.card.cvv],
+        pin : [this.card.pin],
+        blockedStatus : [this.card.isBlocked],
+        deletedStatus : [this.card.isDeleted]
       });
+      this.isQrDataAvailable = true;
+    });
   }
 }

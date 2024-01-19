@@ -30,7 +30,6 @@ import { EditAccountComponent } from './components/edit-account/edit-account.com
 import { ViewAccountComponent } from './components/view-account/view-account.component';
 import { ViewCardComponent } from './components/view-card/view-card.component';
 import { EditCardComponent } from './components/edit-card/edit-card.component';
-import { YoutubeComponent } from './youtube/youtube.component';
 import { CardTemplateComponent } from './components/card-template/card-template.component';
 import { CardQrCodeComponent } from './components/card-qr-code/card-qr-code.component';
 
@@ -60,7 +59,6 @@ import { CardQrCodeComponent } from './components/card-qr-code/card-qr-code.comp
     ViewAccountComponent,
     ViewCardComponent,
     EditCardComponent,
-    YoutubeComponent,
     CardTemplateComponent,
     CardQrCodeComponent
   ],
