@@ -5,7 +5,10 @@ import { AccountWithdrawByNumber } from "../models/account/withdraw/account-with
 import { Card } from "../models/card/card";
 
 export class StaticData{
-    public static assetsDirPath="../../assets/";
+    // for build
+    public static assetsDirPath="assets/";
+    // for local
+    // public static assetsDirPath="../../assets/";
     public static baseURL="http://localhost:8080";
     public static scannedCardNumber="";
     public static card:Card;
