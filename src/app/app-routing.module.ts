@@ -21,9 +21,11 @@ import { EditCardComponent } from './components/edit-card/edit-card.component';
 import { ViewAccountComponent } from './components/view-account/view-account.component';
 import { ViewCardComponent } from './components/view-card/view-card.component';
 import { TestComponent } from './components/test/test.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent },
+  { path:'about', component:AboutComponent },
   { path:'admin', component:AdminComponent, children:[
     {path:'all-accounts', component:AllAccountsComponent},
     {path:'all-cards', component:AllCardsComponent},
